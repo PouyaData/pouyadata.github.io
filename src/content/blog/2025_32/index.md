@@ -1,7 +1,7 @@
 ---
 title: "Dear Tech Grads: You Keep Using That Word. I Do Not Think It Means What You Think It Means"
 description: "Wake-up call to tech graduates and professionals ."
-publishDate: "2025-08-05"
+publishDate: 2025-08-05
 author: "Pouya Barrach-Yousefi"
 ---
 
