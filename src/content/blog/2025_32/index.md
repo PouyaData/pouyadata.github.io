@@ -1,11 +1,9 @@
 ---
-title: "Dear Tech Grads: You Keep Using That Word. I Do Not Think It Means What You Think It Means"
+title: "Dear Tech Job Hunters: You Keep Using Those Words. I Do Not Think They Mean What You Think They Mean"
 description: "Wake-up call to tech graduates and professionals ."
 publishDate: 2025-08-05
 author: "Pouya Barrach-Yousefi"
 ---
-
-# Dear Tech Grads: You Keep Using That Word. I Do Not Think It Means What You Think It Means
 
 ![Princess Bride](./images/princessbride4.jpg)
 
@@ -28,6 +26,8 @@ Let me paint you a picture of what I see every day.
 **The "Data Scientist" who's never cleaned real data.** They aced their statistics courses and can derive the math behind gradient descent. But hand them a 10GB CSV with missing values, inconsistent formatting, and duplicate records? They're lost. Worse, they can't tell me what this data actually means for the business. "What user actions affect these metrics?" I ask. Silence. "What decisions will stakeholders make based on this analysis?" More silence. They've never connected data to reality.
 
 **The "Developer" who's never written a unit test.** They solved LeetCode problems for months, memorized every sorting algorithm, but have never written a single unit test. Automation? That's something other people do. They code like it's 2010, manually testing everything, oblivious to the fact that modern developers automate everything they touch. Their GitHub profile? Either empty or filled with forked tutorials they never touched.
+
+**The "Graph Expert" who doesn't know RDF.** They put "Graph Databases" and "Knowledge Graphs" all over their resume. Neo4j? "Oh yeah, I've heard of it." But ask them about RDF, SPARQL, or ontologies? Blank stares. They think a knowledge graph is just any database with relationships. They've never built a proper triple store, never written a SPARQL query, never designed an ontology. They're not graph experts—they're people who once saw a picture with circles and arrows.
 
 The kicker? [Computer science graduates face unemployment rates of 6.1-7.8%](https://www.entrepreneur.com/business-news/college-majors-with-the-lowest-unemployment-rates-report/491781) while we're desperate for talent. It's not a supply problem—it's a reality problem.
 
