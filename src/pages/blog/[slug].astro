@@ -15,11 +15,11 @@ const { Content } = await post.render();
 const { title, description, publishDate, author } = post.data;
 ---
 
-<BaseLayout>
-  <article>
-    <h1>{title}</h1>
-    <p>{description}</p>
-    <p><time datetime={publishDate.toISOString()}>{publishDate.toDateString()}</time> • {author}</p>
-    <Content />
-  </article>
-</BaseLayout>
+  <BaseLayout>
+    <article class="post">
+      <h1>{title}</h1>
+      <p class="post-description">{description}</p>
+      <p class="post-meta"><time datetime={publishDate.toISOString()}>{publishDate.toDateString()}</time> • {author}</p>
+      <Content />
+    </article>
+  </BaseLayout>
