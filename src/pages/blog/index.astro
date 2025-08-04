@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 const posts: CollectionEntry<'blog'>[] = await getCollection('blog');
@@ -10,19 +11,5 @@ posts.sort(
 ---
 <BaseLayout title="Blog" description="Browse all blog posts from Pouya Data">
   <h1>Blog</h1>
-  <ul>
-    {posts.map((post) => (
-      <li>
-        <article>
-          <h2><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h2>
-          <p>{post.data.description}</p>
-          <p>
-            <time datetime={post.data.publishDate.toISOString()}>
-              {post.data.publishDate.toDateString()}
-            </time>
-          </p>
-        </article>
-      </li>
-    ))}
-  </ul>
+  <PostList posts={posts} />
 </BaseLayout>
