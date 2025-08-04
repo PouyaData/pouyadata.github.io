@@ -19,9 +19,10 @@ Thumbs.db
 .idea/
 
 # Optional: lock files (if you use only one)
-# package-lock.json
-# yarn.lock
-# pnpm-lock.yaml
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
-# Astro cache (optional)
+# Astro cache 
 .cache/
+.astro/
