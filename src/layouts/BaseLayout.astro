@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Nav from "../components/Nav.astro";
 
 export interface Props {
   title?: string;
@@ -16,6 +17,7 @@ const { title = "Pouya Data", description } = Astro.props as Props;
     {description && <meta name="description" content={description} />}
   </head>
   <body>
+    <Nav />
     <main class="container">
       <slot />
     </main>
