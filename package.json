@@ -4,7 +4,10 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test": "astro check",
+    "test:unit": "vitest",
+    "test:watch": "vitest --watch"
   },
   "dependencies": {
     "astro": "^5.12.8"
