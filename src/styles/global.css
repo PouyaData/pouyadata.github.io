@@ -13,6 +13,14 @@ a {
   text-decoration: none;
 }
 
+.post-nav {
+  margin-bottom: 1rem;
+}
+
+.post-nav a {
+  margin-right: 0.5rem;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
