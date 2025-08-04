@@ -1,5 +1,13 @@
 ---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
 // Based on uploaded HTML landing content
+const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
+allPosts.sort(
+  (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
+    b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+const posts = allPosts.slice(0, 3);
 ---
 
       <div class="container">
@@ -100,6 +108,23 @@
                           <p>Specialized experience working with Department of Defense clients and government agencies, ensuring compliance with security requirements while delivering innovative AI solutions that meet mission-critical objectives.</p>
                       </div>
                   </div>
+              </section>
+
+              <section class="section">
+                  <h2>Recent Posts</h2>
+                  <ul>
+                    {posts.map((post) => (
+                      <li>
+                        <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                        <p>{post.data.description}</p>
+                        <p>
+                          <time datetime={post.data.publishDate.toISOString()}>
+                            {post.data.publishDate.toDateString()}
+                          </time>
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
               </section>
           </main>
 
