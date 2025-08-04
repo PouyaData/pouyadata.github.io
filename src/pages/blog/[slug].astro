@@ -16,6 +16,9 @@ const { title, description, publishDate, author } = post.data;
 ---
 
   <BaseLayout>
+    <nav class="post-nav">
+      <a href="/">Home</a> / <a href="/blog">All Posts</a>
+    </nav>
     <article class="post">
       <h1>{title}</h1>
       <p class="post-description">{description}</p>
