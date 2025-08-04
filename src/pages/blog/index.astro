@@ -5,23 +5,24 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 const posts: CollectionEntry<'blog'>[] = await getCollection('blog');
 posts.sort(
   (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
-    b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+    b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
 );
 ---
-
-  <BaseLayout>
-    <h1>Blog</h1>
-    <ul>
-      {posts.map((post) => (
-        <li>
-          <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+<BaseLayout title="Blog" description="Browse all blog posts from Pouya Data">
+  <h1>Blog</h1>
+  <ul>
+    {posts.map((post) => (
+      <li>
+        <article>
+          <h2><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h2>
           <p>{post.data.description}</p>
           <p>
             <time datetime={post.data.publishDate.toISOString()}>
               {post.data.publishDate.toDateString()}
             </time>
           </p>
-        </li>
-      ))}
-    </ul>
-  </BaseLayout>
+        </article>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
