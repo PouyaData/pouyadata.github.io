@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props as Props;
+---
+<section class="section">
+  <h2>Recent Posts</h2>
+  <ul>
+    {posts.map((post) => (
+      <li>
+        <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+        <p>{post.data.description}</p>
+        <p>
+          <time datetime={post.data.publishDate.toISOString()}>
+            {post.data.publishDate.toDateString()}
+          </time>
+        </p>
+      </li>
+    ))}
+  </ul>
+</section>
