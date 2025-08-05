@@ -207,6 +207,12 @@ body {
     margin-top: 40px;
 }
 
+.tech-heading {
+    text-align: center;
+    color: white;
+    border-bottom: 3px solid #FFD700;
+}
+
 .tech-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
