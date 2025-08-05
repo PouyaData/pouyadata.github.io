@@ -103,7 +103,7 @@ Let's talk about what's actually missing. You say you know AI, but:
 
 You want to know what makes me sit up in an interview? Here's the secret sauce:
 
-**1. You did your homework.** You know what Pouya Data does. You've looked at our projects, understand our challenges, and come prepared with ideas. One candidate recently opened with, "I noticed your data pipeline processing times in your tech blog. I built a proof of concept that could reduce that by 40%." Hired.
+**1. You did your homework.** You know what I do, what we do, and what our clients do. You've looked at our projects, understand our challenges, and come prepared with ideas. One candidate recently opened with, "I noticed your data pipeline processing times in your tech blog. I built a proof of concept that could reduce that by 40%." Hired.
 
 **2. You're part of the community.** You attend meetups (virtual counts!). You've contributed to open source. You answer questions on Stack Overflow. You have opinions about the latest papers because you actually read them. You understand this is a craft, and craftsmen learn from each other.
 
