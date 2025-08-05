@@ -30,14 +30,7 @@ describe('RecentPosts', () => {
         },
       },
     ];
-    const html = await renderAstro(
-      'src/components/RecentPosts.astro',
-      { posts },
-      (code) =>
-        code
-          .replace(/interface Props\s*{[^}]+}\n/, '')
-          .replace(/Astro\.props as Props/, 'Astro.props')
-    );
+      const html = await renderAstro('src/components/RecentPosts.astro', { posts });
     const $ = load(html);
     expect($('h2').text()).toBe('Recent Posts');
     expect(postListStub).toHaveBeenCalledOnce();
