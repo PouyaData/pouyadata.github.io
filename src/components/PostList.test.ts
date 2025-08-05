@@ -22,7 +22,7 @@ describe('PostList', () => {
         },
       },
     ];
-    const html = await renderAstro('src/components/PostList.astro', { posts });
+    const { html } = await renderAstro('src/components/PostList.astro', { posts });
     const $ = load(html);
     expect($('li').first().find('a').attr('href')).toBe('/blog/first/');
     expect($('li').eq(1).find('a').attr('href')).toBe('/blog/second/');

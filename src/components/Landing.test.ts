@@ -83,7 +83,7 @@ vi.mock('~/components/RecentPosts.astro', () => {
 
 describe('Landing', () => {
   it('renders only the three most recent posts', async () => {
-    const html = await renderAstro('src/components/Landing.astro');
+    const { html } = await renderAstro('src/components/Landing.astro');
     expect(html).toContain('/blog/new/');
     expect(html).toContain('/blog/mid/');
     expect(html).toContain('/blog/old/');
