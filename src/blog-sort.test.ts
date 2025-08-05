@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { sortPostsByDateDesc } from '~/utils/post';
 
 describe('blog sorting', () => {
   it('orders posts by publish date descending', () => {
@@ -6,9 +7,9 @@ describe('blog sorting', () => {
       { slug: 'old', data: { publishDate: new Date('2023-01-01') } },
       { slug: 'new', data: { publishDate: new Date('2024-01-01') } },
     ];
-    posts.sort(
-      (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-    );
-    expect(posts.map((p) => p.slug)).toEqual(['new', 'old']);
+    expect(sortPostsByDateDesc(posts).map((p) => p.slug)).toEqual([
+      'new',
+      'old',
+    ]);
   });
 });

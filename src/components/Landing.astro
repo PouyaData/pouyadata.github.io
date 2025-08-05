@@ -5,15 +5,11 @@ import RecentPosts from '~/components/RecentPosts.astro';
 import Technologies from '~/components/Technologies.astro';
 import CTA from '~/components/CTA.astro';
 import '~/styles/landing.css';
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { sortPostsByDateDesc } from '~/utils/post';
 
 // Based on uploaded HTML landing content
-const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
-allPosts.sort(
-  (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
-    b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-);
-const posts = allPosts.slice(0, 3);
+const posts = sortPostsByDateDesc(await getCollection('blog')).slice(0, 3);
 ---
 <div class="container">
   <Header />
