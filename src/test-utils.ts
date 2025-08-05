@@ -31,7 +31,11 @@ export async function renderAstro(
     styles: new Set(),
     scripts: new Set(),
     links: new Set(),
-    createAstro: (Astro: Record<string, unknown>, props: unknown, slots: unknown) => ({
+    createAstro: (
+      Astro: Record<string, unknown>,
+      props: unknown,
+      slots: unknown
+    ) => ({
       ...Astro,
       props,
       slots,
@@ -63,11 +67,13 @@ export async function renderAstro(
     componentMetadata: new Map(),
     inlinedScripts: new Map(),
   };
-  const html = (await runtime.renderToString(
-    result as unknown,
-    Component,
-    props,
-    {}
-  )) as string;
+  const html = (await (
+    runtime.renderToString as unknown as (
+      result: unknown,
+      component: unknown,
+      props: unknown,
+      slots: unknown
+    ) => Promise<string>
+  )(result, Component, props, {})) as string;
   return html;
 }
