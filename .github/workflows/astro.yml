@@ -72,9 +72,6 @@ jobs:
       - name: Run tests
         run: npm test
         working-directory: ${{ env.BUILD_PATH }}
-      - name: Run unit tests
-        run: npm run test:unit
-        working-directory: ${{ env.BUILD_PATH }}
       - name: Build with Astro
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
