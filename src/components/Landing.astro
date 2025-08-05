@@ -6,10 +6,14 @@ import Technologies from '~/components/Technologies.astro';
 import CTA from '~/components/CTA.astro';
 import '~/styles/landing.css';
 import { getCollection } from 'astro:content';
-import { sortPostsByDateDesc } from '~/utils/post';
 
 // Based on uploaded HTML landing content
-const posts = sortPostsByDateDesc(await getCollection('blog')).slice(0, 3);
+/** @type {import('astro:content').CollectionEntry<'blog'>[]} */
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  // @ts-ignore - runtime sort does not need explicit types
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 3);
 ---
 <div class="container">
   <Header />
