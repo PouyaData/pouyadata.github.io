@@ -37,16 +37,14 @@ const contactSections = [
         contactSections.map((section) => (
           <div class="contact-info">
             <div class="role-title">{section.role}</div>
-            {section.contacts.map((contact) => (
-              <ul class="contact-line">
-                <li>
+            <ul class="contact-list">
+              {section.contacts.map((contact) => (
+                <li class="contact-line">
                   🌐 <a href={`https://${contact.site}`}>{contact.site}</a>
-                </li>
-                <li>
                   📧 <a href={`mailto:${contact.email}`}>{contact.email}</a>
                 </li>
-              </ul>
-            ))}
+              ))}
+            </ul>
           </div>
         ))
       }

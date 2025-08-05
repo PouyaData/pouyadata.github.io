@@ -94,11 +94,15 @@ body {
   margin-bottom: 15px;
 }
 
+.contact-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .contact-line {
   font-size: 0.9em;
   margin: 0 0 5px 0;
-  padding: 0;
-  list-style: none;
   display: flex;
   justify-content: center;
   align-items: center;
