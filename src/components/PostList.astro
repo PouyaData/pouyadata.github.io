@@ -4,18 +4,21 @@ const { posts } = Astro.props as { posts: CollectionEntry<'blog'>[] };
 ---
 
 <ul>
-  {posts.map((post) => (
-    <li>
-      <article>
-        <h2><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h2>
-        <p>{post.data.description}</p>
-        <p>
-          <time datetime={post.data.publishDate.toISOString()}>
-            {post.data.publishDate.toDateString()}
-          </time>
-        </p>
-      </article>
-    </li>
-  ))}
+  {
+    posts.map((post) => (
+      <li>
+        <article>
+          <h2>
+            <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+          </h2>
+          <p>{post.data.description}</p>
+          <p>
+            <time datetime={post.data.publishDate.toISOString()}>
+              {post.data.publishDate.toDateString()}
+            </time>
+          </p>
+        </article>
+      </li>
+    ))
+  }
 </ul>
-

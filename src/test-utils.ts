@@ -1,5 +1,4 @@
 import { readFile, writeFile, unlink } from 'node:fs/promises';
-import * as fs from 'fs';
 import { transform } from '@astrojs/compiler';
 import * as runtime from 'astro/runtime/server/index.js';
 import * as path from 'node:path';
@@ -8,8 +7,8 @@ import { pathToFileURL } from 'node:url';
 
 export async function renderAstro(
   file: string,
-  props: Record<string, any> = {},
-  transformCode?: (code: string) => string,
+  props: Record<string, unknown> = {},
+  transformCode?: (code: string) => string
 ): Promise<string> {
   const source = await readFile(file, 'utf-8');
   let { code } = await transform(source, {
@@ -32,7 +31,15 @@ export async function renderAstro(
     styles: new Set(),
     scripts: new Set(),
     links: new Set(),
-    createAstro: (Astro: any, props: any, slots: any) => ({ ...Astro, props, slots }),
+    createAstro: (
+      Astro: Record<string, unknown>,
+      props: unknown,
+      slots: unknown
+    ) => ({
+      ...Astro,
+      props,
+      slots,
+    }),
     resolve: async (s: string) => s,
     response: {},
     request: {},
@@ -59,7 +66,14 @@ export async function renderAstro(
     cancelled: false,
     componentMetadata: new Map(),
     inlinedScripts: new Map(),
-  } as any;
-    const html = (await runtime.renderToString(result, Component, props, {})) as string;
-    return html;
-  }
+  };
+  const html = (await (
+    runtime.renderToString as unknown as (
+      result: unknown,
+      component: unknown,
+      props: unknown,
+      slots: unknown
+    ) => Promise<string>
+  )(result, Component, props, {})) as string;
+  return html;
+}

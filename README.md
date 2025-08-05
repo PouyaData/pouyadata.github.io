@@ -54,6 +54,8 @@ This website represents a comprehensive digital presence that includes:
 
 - **Vitest 3.2.4**: Fast unit testing framework
 - **@astrojs/check**: Type checking and linting
+- **ESLint 8.57.0**: Code linting and style enforcement
+- **Prettier 3.3.2**: Code formatting
 - **Git**: Version control and collaboration
 
 ### Deployment
@@ -118,7 +120,7 @@ src/
 4. **Open your browser**
    Navigate to `http://localhost:4321` to view the site
 
-## 🧪 Testing
+## 🧪 Testing & Code Quality
 
 ### Static Analysis
 
@@ -142,6 +144,22 @@ Run tests in watch mode for development:
 
 ```bash
 npm run test:watch
+```
+
+### Linting
+
+Run ESLint to check code quality and style:
+
+```bash
+npm run lint
+```
+
+### Formatting
+
+Format code with Prettier:
+
+```bash
+npm run format
 ```
 
 ## 🏗️ Build & Deployment
@@ -170,10 +188,10 @@ The site is automatically deployed to GitHub Pages when changes are pushed to th
 
    ```yaml
    ---
-   title: "Your Post Title"
-   description: "Brief description for SEO"
+   title: 'Your Post Title'
+   description: 'Brief description for SEO'
    publishDate: 2025-01-01
-   author: "Pouya Barrach-Yousefi"
+   author: 'Pouya Barrach-Yousefi'
    ---
    ```
 
@@ -218,4 +236,4 @@ For professional inquiries, consultation requests, or collaboration opportunitie
 
 ---
 
-*Built with ❤️ using Astro, TypeScript, and modern web technologies.*
+_Built with ❤️ using Astro, TypeScript, and modern web technologies._

@@ -1,42 +1,55 @@
 ---
 const contactSections = [
   {
-    role: "Chief Technology Officer",
+    role: 'Chief Technology Officer',
     contacts: [
-      { site: "tequity.app", email: "pouya@tequity.app" },
-      { site: "kenniss.com", email: "pouya@kenniss.com" },
+      { site: 'tequity.app', email: 'pouya@tequity.app' },
+      { site: 'kenniss.com', email: 'pouya@kenniss.com' },
     ],
   },
   {
-    role: "Chief Data & AI Officer",
+    role: 'Chief Data & AI Officer',
     contacts: [
-      { site: "cervais.com", email: "pouya@cervais.com" },
-      { site: "bookerdimaio.com", email: "pouya.byousefi@bookerdimaio.com" },
-      { site: "pouyadata.com", email: "pouyadatallc@gmail.com" },
-      { site: "humanrightsconnected.org", email: "pouya@humanrightsconnected.org" },
+      { site: 'cervais.com', email: 'pouya@cervais.com' },
+      { site: 'bookerdimaio.com', email: 'pouya.byousefi@bookerdimaio.com' },
+      { site: 'pouyadata.com', email: 'pouyadatallc@gmail.com' },
+      {
+        site: 'humanrightsconnected.org',
+        email: 'pouya@humanrightsconnected.org',
+      },
     ],
   },
 ];
 ---
+
 <header class="header">
   <div class="header-content">
     <div class="header-info">
       <h1>Pouya Barrach-Yousefi</h1>
       <div class="title">Technology Executive</div>
-      <div class="tagline">Transforming Organizations Through Data Science, Machine Learning, and Generative AI Innovation</div>
+      <div class="tagline">
+        Transforming Organizations Through Data Science, Machine Learning, and
+        Generative AI Innovation
+      </div>
     </div>
     <div class="contact-grid">
-      {contactSections.map((section) => (
-        <div class="contact-info">
-          <div class="role-title">{section.role}</div>
-          {section.contacts.map((contact) => (
-            <ul class="contact-line">
-              <li>🌐 <a href={`https://${contact.site}`}>{contact.site}</a></li>
-              <li>📧 <a href={`mailto:${contact.email}`}>{contact.email}</a></li>
-            </ul>
-          ))}
-        </div>
-      ))}
+      {
+        contactSections.map((section) => (
+          <div class="contact-info">
+            <div class="role-title">{section.role}</div>
+            {section.contacts.map((contact) => (
+              <ul class="contact-line">
+                <li>
+                  🌐 <a href={`https://${contact.site}`}>{contact.site}</a>
+                </li>
+                <li>
+                  📧 <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                </li>
+              </ul>
+            ))}
+          </div>
+        ))
+      }
     </div>
   </div>
 </header>
