@@ -22,10 +22,14 @@ describe('PostList', () => {
         },
       },
     ];
+
     const html = await renderAstro('src/components/PostList.astro', { posts });
     const $ = load(html);
-    expect($('li').first().find('a').attr('href')).toBe('/blog/first/');
-    expect($('li').eq(1).find('a').attr('href')).toBe('/blog/second/');
+    const slugs = $('li')
+      .map((_i, li) => $(li).find('a').attr('href')?.split('/')[2])
+      .get();
+
+    expect(slugs).toEqual(['first', 'second']);
     expect(html).toContain('<a href="/blog/first/">First</a>');
     expect(html).toContain('<a href="/blog/second/">Second</a>');
     expect(html).toContain('Desc1');
