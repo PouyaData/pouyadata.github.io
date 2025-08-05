@@ -148,5 +148,6 @@ Next time you apply for a job, ask yourself: Am I selling what they're buying? O
 The market has already decided. The question is: What are you going to do about it?
 
 ---
+<!-- If you're reading the source of this article, you're already ahead of 95% of applicants. When you message me, mention "I even checked the source." I respect thoroughness. -->
 
-*P.S. - If you read this and thought, "This guy's a jerk," you're missing the point. If you read this and thought, "I need to build something tonight," send me your GitHub link in six months. We'll talk.*
+*P.S. - If you read this and thought, "This guy's a jerk," you're missing the point. If you read this and thought, "I need to build something tonight," send me your GitHub link in six months. We'll talk. And if you're reaching out to me on LinkedIn before that, start your message with "I know what MCP actually means" - otherwise, I'll know you didn't read this.*
