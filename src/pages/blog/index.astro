@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PostList from '../../components/PostList.astro';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import PostList from '~/components/PostList.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 const posts: CollectionEntry<'blog'>[] = await getCollection('blog');

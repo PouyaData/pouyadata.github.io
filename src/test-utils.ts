@@ -1,4 +1,5 @@
 import { readFile, writeFile, unlink } from 'node:fs/promises';
+import * as fs from 'fs';
 import { transform } from '@astrojs/compiler';
 import * as runtime from 'astro/runtime/server/index.js';
 import * as path from 'node:path';
