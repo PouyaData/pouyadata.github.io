@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { renderAstro } from '~/test-utils';
+import { render } from '@astrojs/test-utils';
 import { load } from 'cheerio';
+import PostList from './PostList.astro';
 
 describe('PostList', () => {
   it('renders posts with details in given order', async () => {
@@ -23,7 +24,7 @@ describe('PostList', () => {
       },
     ];
 
-    const html = await renderAstro('src/components/PostList.astro', { posts });
+    const { html } = await render(PostList, { posts });
     const $ = load(html);
     const slugs = $('li')
       .map((_i, li) => $(li).find('a').attr('href')?.split('/')[2])

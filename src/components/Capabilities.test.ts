@@ -1,10 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { renderAstro } from '~/test-utils';
+import { render } from '@astrojs/test-utils';
 import { load } from 'cheerio';
+import Capabilities from './Capabilities.astro';
 
 describe('Capabilities', () => {
   it('renders capability sections with headings', async () => {
-    const html = await renderAstro('src/components/Capabilities.astro');
+    const { html } = await render(Capabilities);
     const $ = load(html);
     expect($('h2').text()).toBe('Core Capabilities');
     const headings = $('h3')

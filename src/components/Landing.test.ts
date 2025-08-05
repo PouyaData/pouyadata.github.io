@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
-import { renderAstro } from '~/test-utils';
+import { render } from '@astrojs/test-utils';
+import Landing from './Landing.astro';
 
 const posts = vi.hoisted(() => [
   {
@@ -83,7 +84,7 @@ vi.mock('~/components/RecentPosts.astro', () => {
 
 describe('Landing', () => {
   it('renders only the three most recent posts', async () => {
-    const html = await renderAstro('src/components/Landing.astro');
+    const { html } = await render(Landing);
     expect(html).toContain('/blog/new/');
     expect(html).toContain('/blog/mid/');
     expect(html).toContain('/blog/old/');

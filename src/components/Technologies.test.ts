@@ -1,10 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { renderAstro } from '~/test-utils';
+import { render } from '@astrojs/test-utils';
 import { load } from 'cheerio';
+import Technologies from './Technologies.astro';
 
 describe('Technologies', () => {
   it('renders technology categories and heading', async () => {
-    const html = await renderAstro('src/components/Technologies.astro');
+    const { html } = await render(Technologies);
     const $ = load(html);
     expect($('.tech-heading').text()).toBe('Technology Expertise');
     const categories = $('h4')

@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from 'vitest';
-import { renderAstro } from '~/test-utils';
+import { render } from '@astrojs/test-utils';
 import { load } from 'cheerio';
+import RecentPosts from './RecentPosts.astro';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const postListStub = vi.fn((result: unknown, props: { posts: Array<{ slug: string; data: { title: string; description: string; publishDate: Date } }> }) => {
+const postListStub = vi.fn((_result: unknown, _props: { posts: Array<{ slug: string; data: { title: string; description: string; publishDate: Date } }> }) => {
   // Parameters are used implicitly by the mock tracking
   return '';
 });
@@ -30,7 +30,7 @@ describe('RecentPosts', () => {
         },
       },
     ];
-      const html = await renderAstro('src/components/RecentPosts.astro', { posts });
+    const { html } = await render(RecentPosts, { posts });
     const $ = load(html);
     expect($('h2').text()).toBe('Recent Posts');
     expect(postListStub).toHaveBeenCalledOnce();
