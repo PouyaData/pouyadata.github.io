@@ -98,8 +98,12 @@ export async function renderAstro(
   if (transformCode) code = transformCode(code);
   const tempPath = path.join(path.dirname(file), `.tmp-${randomUUID()}.mjs`);
   await writeFile(tempPath, code, 'utf-8');
-  const mod = await import(pathToFileURL(tempPath).href);
-  await unlink(tempPath).catch(() => {});
+  let mod;
+  try {
+    mod = await import(pathToFileURL(tempPath).href);
+  } finally {
+    await unlink(tempPath).catch(() => {});
+  }
   const Component = mod.default;
   const result = createRenderContext();
   const html = (await (
