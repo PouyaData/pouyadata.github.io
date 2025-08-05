@@ -1,10 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { renderAstro } from '~/test-utils';
+import { render } from '@astrojs/test-utils';
 import { load } from 'cheerio';
+import Header from './Header.astro';
 
 describe('Header', () => {
   it('renders role titles and contact info', async () => {
-    const html = await renderAstro('src/components/Header.astro');
+    const { html } = await render(Header);
     const $ = load(html);
     const roles = ['Chief Technology Officer', 'Chief Data & AI Officer'];
     roles.forEach((role) => {

@@ -1,10 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { renderAstro } from '~/test-utils';
+import { render } from '@astrojs/test-utils';
 import { load } from 'cheerio';
+import CTA from './CTA.astro';
 
 describe('CTA', () => {
   it('renders heading, description and contact link', async () => {
-    const html = await renderAstro('src/components/CTA.astro');
+    const { html } = await render(CTA);
     const $ = load(html);
     expect($('h2').text()).toBe('Ready to Transform Your Organization?');
     expect($('p').text()).toContain(
