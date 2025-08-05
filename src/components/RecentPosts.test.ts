@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { renderAstro } from '~/test-utils';
 import { load } from 'cheerio';
 
-const postListStub = vi.fn((_result, _props: { posts: unknown[] }) => '');
+const postListStub = vi.fn(() => '');
 (postListStub as unknown as { isAstroComponentFactory: boolean }).isAstroComponentFactory = true;
 vi.mock('~/components/PostList.astro', () => ({ default: postListStub }));
 

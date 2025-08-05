@@ -22,8 +22,8 @@ describe('Header', () => {
       },
     ];
     contacts.forEach(({ site, email }) => {
-      expect($(`a[href=\"https://${site}\"]`).text()).toBe(site);
-      expect($(`a[href=\"mailto:${email}\"]`).text()).toBe(email);
+      expect($(`a[href="https://${site}"]`).text()).toBe(site);
+      expect($(`a[href="mailto:${email}"]`).text()).toBe(email);
     });
   });
 });
