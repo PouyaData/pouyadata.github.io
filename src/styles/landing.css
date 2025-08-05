@@ -110,6 +110,28 @@ body {
   margin-bottom: 0;
 }
 
+/* Header link styling for better visibility */
+.header a {
+  color: #ffd700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.header a:hover {
+  color: #ffa500;
+  text-decoration: underline;
+}
+
+.contact-line a {
+  color: #ffd700;
+  font-weight: 500;
+}
+
+.contact-line a:hover {
+  color: #ffa500;
+  text-decoration: underline;
+}
+
 .main-content {
   padding: 60px 40px;
 }
