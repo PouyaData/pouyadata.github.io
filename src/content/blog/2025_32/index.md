@@ -1,8 +1,8 @@
 ---
-title: "Dear Tech Job Hunters: You Keep Using Those Words. I Do Not Think They Mean What You Think They Mean"
-description: "Wake-up call to tech graduates and professionals ."
+title: 'Dear Tech Job Hunters: You Keep Using Those Words. I Do Not Think They Mean What You Think They Mean'
+description: 'Wake-up call to tech graduates and professionals .'
 publishDate: 2025-08-05
-author: "Pouya Barrach-Yousefi"
+author: 'Pouya Barrach-Yousefi'
 ---
 
 ![Princess Bride](./images/princessbride4.jpg)
@@ -13,7 +13,7 @@ Last week, I advised my umpteenth "AI Engineer" of the month. When I asked them 
 
 ## The Great Disconnect: A Tale of Two Realities
 
-Here's what happened. Somewhere between the classroom and the job market, an entire generation convinced themselves that knowing *about* something is the same as knowing *how to do* something. They throw around terms like "AI Engineer," "Agentic AI," and "Data Scientist" like they're Pokemon cards, collecting titles without understanding the game.
+Here's what happened. Somewhere between the classroom and the job market, an entire generation convinced themselves that knowing _about_ something is the same as knowing _how to do_ something. They throw around terms like "AI Engineer," "Agentic AI," and "Data Scientist" like they're Pokemon cards, collecting titles without understanding the game.
 
 The numbers tell the story: Despite [2.5 million STEM graduates annually in India alone and 900,000 in the US](https://ncses.nsf.gov/pubs/nsb202332/international-comparisons-of-s-e-higher-education), we can't fill critical roles. Why? Because [only 12% of IT professionals actually possess the AI skills they claim to have](https://www.informationweek.com/it-leadership/the-ai-skills-gap-and-how-to-address-it).
 
@@ -148,6 +148,7 @@ Next time you apply for a job, ask yourself: Am I selling what they're buying? O
 The market has already decided. The question is: What are you going to do about it?
 
 ---
+
 <!-- If you're reading the source of this article, you're already ahead of 95% of applicants. When you message me, mention "I even checked the source." I respect thoroughness. -->
 
-*P.S. - If you read this and thought, "This guy's a jerk," you're missing the point. If you read this and thought, "I need to build something tonight," send me your GitHub link in six months. We'll talk. And if you're reaching out to me on LinkedIn before that, start your message with "I know what MCP actually means" - otherwise, I'll know you didn't read this.*
+_P.S. - If you read this and thought, "This guy's a jerk," you're missing the point. If you read this and thought, "I need to build something tonight," send me your GitHub link in six months. We'll talk. And if you're reaching out to me on LinkedIn before that, start your message with "I know what MCP actually means" - otherwise, I'll know you didn't read this._

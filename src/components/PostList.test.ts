@@ -22,15 +22,15 @@ describe('PostList', () => {
         },
       },
     ];
-      const html = await renderAstro('src/components/PostList.astro', { posts });
-      const $ = load(html);
-      expect($('li').first().find('a').attr('href')).toBe('/blog/first/');
-      expect($('li').eq(1).find('a').attr('href')).toBe('/blog/second/');
-      expect(html).toContain('<a href="/blog/first/">First</a>');
-      expect(html).toContain('<a href="/blog/second/">Second</a>');
-      expect(html).toContain('Desc1');
-      expect(html).toContain('Desc2');
-      expect(html).toContain(posts[0].data.publishDate.toDateString());
-      expect(html).toContain(posts[1].data.publishDate.toDateString());
-      });
-    });
+    const html = await renderAstro('src/components/PostList.astro', { posts });
+    const $ = load(html);
+    expect($('li').first().find('a').attr('href')).toBe('/blog/first/');
+    expect($('li').eq(1).find('a').attr('href')).toBe('/blog/second/');
+    expect(html).toContain('<a href="/blog/first/">First</a>');
+    expect(html).toContain('<a href="/blog/second/">Second</a>');
+    expect(html).toContain('Desc1');
+    expect(html).toContain('Desc2');
+    expect(html).toContain(posts[0].data.publishDate.toDateString());
+    expect(html).toContain(posts[1].data.publishDate.toDateString());
+  });
+});

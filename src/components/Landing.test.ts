@@ -41,30 +41,43 @@ vi.mock('astro:content', () => ({
 }));
 vi.mock('~/components/Header.astro', () => {
   const stub = () => '';
-  (stub as any).isAstroComponentFactory = true;
+  (
+    stub as unknown as { isAstroComponentFactory: boolean }
+  ).isAstroComponentFactory = true;
   return { default: stub };
 });
 vi.mock('~/components/Capabilities.astro', () => {
   const stub = () => '';
-  (stub as any).isAstroComponentFactory = true;
+  (
+    stub as unknown as { isAstroComponentFactory: boolean }
+  ).isAstroComponentFactory = true;
   return { default: stub };
 });
 vi.mock('~/components/Technologies.astro', () => {
   const stub = () => '';
-  (stub as any).isAstroComponentFactory = true;
+  (
+    stub as unknown as { isAstroComponentFactory: boolean }
+  ).isAstroComponentFactory = true;
   return { default: stub };
 });
 vi.mock('~/components/CTA.astro', () => {
   const stub = () => '';
-  (stub as any).isAstroComponentFactory = true;
+  (
+    stub as unknown as { isAstroComponentFactory: boolean }
+  ).isAstroComponentFactory = true;
   return { default: stub };
 });
 vi.mock('~/components/RecentPosts.astro', () => {
-  const stub = (_result: any, props: any) =>
+  const stub = (
+    _result: unknown,
+    props: { posts: Array<{ slug: string; data: { title: string } }> }
+  ) =>
     props.posts
-      .map((p: any) => `<a href="/blog/${p.slug}/">${p.data.title}</a>`)
+      .map((p) => `<a href="/blog/${p.slug}/">${p.data.title}</a>`)
       .join('');
-  (stub as any).isAstroComponentFactory = true;
+  (
+    stub as unknown as { isAstroComponentFactory: boolean }
+  ).isAstroComponentFactory = true;
   return { default: stub };
 });
 
