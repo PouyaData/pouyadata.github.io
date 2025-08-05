@@ -5,8 +5,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "astro check && npm run test:unit",
-    "test:unit": "vitest",
+    "check": "astro check",
+    "test": "npm run check && npm run test:unit",
+    "test:unit": "vitest run",
     "test:watch": "vitest --watch",
     "lint": "eslint . --ext .ts,.tsx,.astro",
     "format": "prettier --write ."
