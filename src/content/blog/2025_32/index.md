@@ -7,7 +7,7 @@ author: "Pouya Barrach-Yousefi"
 
 ![Princess Bride](./images/princessbride4.jpg)
 
-Last week, I interviewed my 47th "AI Engineer" of the month. When I asked them to show me something they'd built with AI, they pulled up ChatGPT and typed a prompt. That was it. That was their demonstration of AI engineering expertise.
+Last week, I advised my umpteenth "AI Engineer" of the month. When I asked them to show me something they'd built with AI, they pulled up ChatGPT and typed a prompt. That was it. That was their demonstration of AI engineering expertise.
 
 "You keep using that word," I wanted to say, channeling my inner Inigo Montoya. "I do not think it means what you think it means."
 
@@ -42,7 +42,7 @@ They open VS Code—plain vanilla VS Code—and start typing. Every. Single. Cha
 
 I die a little inside.
 
-Listen, if you're not using Cursor or similar tools to 10x your productivity, you're competing with developers who are. While you're typing out your 47th for-loop, they've already built, tested, and deployed the entire feature. You're bringing a knife to a gunfight where everyone else has lightsabers.
+Listen, if you're not using Cursor or similar tools to 10x your productivity, you're competing with developers who are. While you're typing out your 1000th for-loop, they've already built, tested, and deployed the entire feature. You're bringing a knife to a gunfight where everyone else has lightsabers.
 
 ## The "I'm Not Technical" Excuse Is Dead
 
@@ -125,7 +125,7 @@ The market has spoken with compensation. [AI-skilled workers see wages rising tw
 
 Look, I'm not heartless. I remember being young and clueless. But the difference is, when someone told me I was clueless, I did something about it. Here's your roadmap:
 
-**Stop collecting certificates. Start building.** I don't care if you have 47 Coursera certificates. Show me one thing you built that someone else actually uses.
+**Stop collecting certificates. Start building.** I don't care if you have a dozen Coursera certificates. Show me one thing you built that someone else actually uses.
 
 **Join the community before you need a job.** The best time to network isn't when you're desperate. Contribute to open source. Attend meetups. Help others. The job offers will follow.
 
