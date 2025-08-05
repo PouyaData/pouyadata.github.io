@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { renderAstro } from '../test-utils';
+import { renderAstro } from '~/test-utils';
 
 describe('PostList', () => {
   it('renders posts in given order with correct links', async () => {
