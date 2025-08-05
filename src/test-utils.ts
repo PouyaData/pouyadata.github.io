@@ -1,11 +1,10 @@
-// @ts-nocheck
-import { readFile, writeFile } from 'fs/promises';
-import fs from 'fs';
+import { readFile, writeFile, unlink } from 'node:fs/promises';
+import * as fs from 'fs';
 import { transform } from '@astrojs/compiler';
 import * as runtime from 'astro/runtime/server/index.js';
-import path from 'path';
-import { randomUUID } from 'crypto';
-import { pathToFileURL } from 'url';
+import * as path from 'node:path';
+import { randomUUID } from 'node:crypto';
+import { pathToFileURL } from 'node:url';
 
 export async function renderAstro(
   file: string,
@@ -26,7 +25,7 @@ export async function renderAstro(
   const tempPath = path.join(path.dirname(file), `.tmp-${randomUUID()}.mjs`);
   await writeFile(tempPath, code, 'utf-8');
   const mod = await import(pathToFileURL(tempPath).href);
-  await fs.promises?.unlink?.(tempPath).catch(() => {});
+  await unlink(tempPath).catch(() => {});
   const Component = mod.default;
   const result = {
     _metadata: { hasRenderedHead: false, extraHead: [] },
@@ -61,6 +60,6 @@ export async function renderAstro(
     componentMetadata: new Map(),
     inlinedScripts: new Map(),
   } as any;
-  const html = await runtime.renderToString(result, Component, props, {});
-  return html;
-}
+    const html = (await runtime.renderToString(result, Component, props, {})) as string;
+    return html;
+  }
