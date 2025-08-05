@@ -15,7 +15,7 @@ const { Content } = await post.render();
 const { title, description, publishDate, author } = post.data;
 ---
 
-  <BaseLayout>
+  <BaseLayout title={title} description={description}>
     <article class="post">
       <h1>{title}</h1>
       <p class="post-description">{description}</p>
