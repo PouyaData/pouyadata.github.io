@@ -2,7 +2,11 @@ import { describe, it, expect, vi } from 'vitest';
 import { renderAstro } from '~/test-utils';
 import { load } from 'cheerio';
 
-const postListStub = vi.fn((_result: unknown, _props: { posts: Array<{ slug: string; data: { title: string; description: string; publishDate: Date } }> }) => '');
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const postListStub = vi.fn((result: unknown, props: { posts: Array<{ slug: string; data: { title: string; description: string; publishDate: Date } }> }) => {
+  // Parameters are used implicitly by the mock tracking
+  return '';
+});
 (postListStub as unknown as { isAstroComponentFactory: boolean }).isAstroComponentFactory = true;
 vi.mock('~/components/PostList.astro', () => ({ default: postListStub }));
 
