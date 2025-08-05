@@ -1,5 +1,6 @@
 import { readFile, writeFile, unlink } from 'node:fs/promises';
 import { transform } from '@astrojs/compiler';
+import { transformSync as esbuildTransform } from 'esbuild';
 import * as runtime from 'astro/runtime/server/index.js';
 import * as path from 'node:path';
 import { randomUUID } from 'node:crypto';
@@ -90,11 +91,10 @@ export async function renderAstro(
     filename: file,
     internalURL: 'astro/runtime/server/index.js',
   });
-  code = code
+  code = esbuildTransform(code, { loader: 'ts', format: 'esm' }).code
     .replace(/import type[^;]+;\n?/g, '')
-    .replace(/ as {[^}]+};/, ';')
     .replace(/,\s*createMetadata as \$\$createMetadata/, '')
-    .replace(/export const \$\$metadata[^;]+;\n/, '');
+    .replace(/const \$\$metadata[^;]+;\n/, '');
   if (transformCode) code = transformCode(code);
   const tempPath = path.join(path.dirname(file), `.tmp-${randomUUID()}.mjs`);
   await writeFile(tempPath, code, 'utf-8');
