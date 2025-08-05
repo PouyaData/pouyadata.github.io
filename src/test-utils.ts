@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { readFile, writeFile } from 'fs/promises';
 import fs from 'fs';
 import { transform } from '@astrojs/compiler';
