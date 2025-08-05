@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { renderAstro } from '~/test-utils';
 import { load } from 'cheerio';
 
-const postListStub = vi.fn(() => '');
+const postListStub = vi.fn((_result: unknown, _props: { posts: Array<{ slug: string; data: { title: string; description: string; publishDate: Date } }> }) => '');
 (postListStub as unknown as { isAstroComponentFactory: boolean }).isAstroComponentFactory = true;
 vi.mock('~/components/PostList.astro', () => ({ default: postListStub }));
 
@@ -37,6 +37,9 @@ describe('RecentPosts', () => {
     const $ = load(html);
     expect($('h2').text()).toBe('Recent Posts');
     expect(postListStub).toHaveBeenCalledOnce();
-    expect(postListStub.mock.calls[0][1].posts).toEqual(posts);
+    const mockCall = postListStub.mock.calls[0];
+    expect(mockCall).toBeDefined();
+    expect(mockCall[1]).toBeDefined();
+    expect(mockCall[1].posts).toEqual(posts);
   });
 });
