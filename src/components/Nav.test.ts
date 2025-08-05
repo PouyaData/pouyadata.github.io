@@ -1,10 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { renderAstro } from '~/test-utils';
+import { render } from '@astrojs/test-utils';
 import { load } from 'cheerio';
+import Nav from './Nav.astro';
 
 describe('Nav', () => {
   it('renders navigation links for Home and Blog', async () => {
-    const html = await renderAstro('src/components/Nav.astro');
+    const { html } = await render(Nav);
     const $ = load(html);
     const homeLink = $('a[href="/"]');
     const blogLink = $('a[href="/blog"]');

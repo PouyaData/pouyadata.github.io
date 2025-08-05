@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
-import { renderAstro } from '~/test-utils';
+import { render } from '@astrojs/test-utils';
 import { load } from 'cheerio';
+import RecentPosts from './RecentPosts.astro';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const postListStub = vi.fn((result: unknown, props: { posts: Array<{ slug: string; data: { title: string; description: string; publishDate: Date } }> }) => {
@@ -30,14 +31,7 @@ describe('RecentPosts', () => {
         },
       },
     ];
-    const html = await renderAstro(
-      'src/components/RecentPosts.astro',
-      { posts },
-      (code) =>
-        code
-          .replace(/interface Props\s*{[^}]+}\n/, '')
-          .replace(/Astro\.props as Props/, 'Astro.props')
-    );
+    const { html } = await render(RecentPosts, { props: { posts } });
     const $ = load(html);
     expect($('h2').text()).toBe('Recent Posts');
     expect(postListStub).toHaveBeenCalledOnce();
