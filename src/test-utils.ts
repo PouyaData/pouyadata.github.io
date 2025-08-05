@@ -5,6 +5,81 @@ import * as path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 
+export function createRenderContext() {
+  return {
+    // Track metadata for head rendering
+    _metadata: { hasRenderedHead: false, extraHead: [] },
+    // Collected inline styles
+    styles: new Set(),
+    // Collected inline scripts
+    scripts: new Set(),
+    // Collected link elements
+    links: new Set(),
+    // Helper to create the Astro global
+    createAstro: (
+      Astro: Record<string, unknown>,
+      props: unknown,
+      slots: unknown
+    ) => ({
+      ...Astro,
+      props,
+      slots,
+    }),
+    // Resolve specifiers to URLs
+    resolve: async (s: string) => s,
+    // Mocked Response object
+    response: {},
+    // Mocked Request object
+    request: {},
+    // SSR renderers
+    renderers: [],
+    // Registered client directives
+    clientDirectives: new Map(),
+    // Whether to compress HTML output
+    compressHTML: false,
+    // Partial rendering flag
+    partial: false,
+    // Current request pathname
+    pathname: '',
+    // Cookie storage
+    cookies: undefined,
+    // Server island mapping
+    serverIslandNameMap: new Map(),
+    // Trailing slash strategy
+    trailingSlash: 'ignore',
+    // Unique render key
+    key: Promise.resolve({}),
+    // Where to inject CSP tags
+    cspDestination: 'head',
+    // Whether to inject CSP meta tags
+    shouldInjectCspMetaTags: false,
+    // CSP hashing algorithm
+    cspAlgorithm: '',
+    // Hashes for inline scripts
+    scriptHashes: new Set(),
+    // External script resources
+    scriptResources: new Set(),
+    // Hashes for inline styles
+    styleHashes: new Set(),
+    // External style resources
+    styleResources: new Set(),
+    // CSP directives
+    directives: new Map(),
+    // Use strict-dynamic CSP
+    isStrictDynamic: false,
+    // Base URL
+    base: '/',
+    // Base path for user assets
+    userAssetsBase: undefined,
+    // Cancellation flag
+    cancelled: false,
+    // Component metadata
+    componentMetadata: new Map(),
+    // Inlined script contents
+    inlinedScripts: new Map(),
+  };
+}
+
 export async function renderAstro(
   file: string,
   props: Record<string, unknown> = {},
@@ -26,47 +101,7 @@ export async function renderAstro(
   const mod = await import(pathToFileURL(tempPath).href);
   await unlink(tempPath).catch(() => {});
   const Component = mod.default;
-  const result = {
-    _metadata: { hasRenderedHead: false, extraHead: [] },
-    styles: new Set(),
-    scripts: new Set(),
-    links: new Set(),
-    createAstro: (
-      Astro: Record<string, unknown>,
-      props: unknown,
-      slots: unknown
-    ) => ({
-      ...Astro,
-      props,
-      slots,
-    }),
-    resolve: async (s: string) => s,
-    response: {},
-    request: {},
-    renderers: [],
-    clientDirectives: new Map(),
-    compressHTML: false,
-    partial: false,
-    pathname: '',
-    cookies: undefined,
-    serverIslandNameMap: new Map(),
-    trailingSlash: 'ignore',
-    key: Promise.resolve({}),
-    cspDestination: 'head',
-    shouldInjectCspMetaTags: false,
-    cspAlgorithm: '',
-    scriptHashes: new Set(),
-    scriptResources: new Set(),
-    styleHashes: new Set(),
-    styleResources: new Set(),
-    directives: new Map(),
-    isStrictDynamic: false,
-    base: '/',
-    userAssetsBase: undefined,
-    cancelled: false,
-    componentMetadata: new Map(),
-    inlinedScripts: new Map(),
-  };
+  const result = createRenderContext();
   const html = (await (
     runtime.renderToString as unknown as (
       result: unknown,
