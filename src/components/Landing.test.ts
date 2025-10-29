@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render } from '@astrojs/test-utils';
+import { render } from '../test-utils';
 import Landing from './Landing.astro';
 
 const posts = vi.hoisted(() => [

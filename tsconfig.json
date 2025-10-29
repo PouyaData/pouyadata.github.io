@@ -2,10 +2,12 @@
   "compilerOptions": {
     "strict": true,
     "baseUrl": ".",
-    "moduleResolution": "bundler",
+    "module": "es2020",
+    "moduleResolution": "node",
     "types": ["vitest"],
     "paths": {
       "~/*": ["src/*"]
     }
-  }
+  },
+  "include": ["src/**/*", "src/types/**/*"]
 }

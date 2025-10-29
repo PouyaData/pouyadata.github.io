@@ -22,6 +22,12 @@ Thumbs.db
 yarn.lock
 pnpm-lock.yaml
 
-# Astro cache 
+# Astro cache
 .cache/
 .astro/
+
+# Claude Code local files
+.claude/
+
+# Intraview local files
+.intraview/

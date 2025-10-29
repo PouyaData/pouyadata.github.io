@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render } from '@astrojs/test-utils';
+import { render } from '../test-utils';
 import { load } from 'cheerio';
 import Header from './Header.astro';
 
