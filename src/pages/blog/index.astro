@@ -2,8 +2,17 @@
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import PostList from '~/components/PostList.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { shouldPublishPost } from '~/utils/dateUtils';
 
-const posts: CollectionEntry<'blog'>[] = await getCollection('blog');
+const deploymentWeek = import.meta.env.DEPLOYMENT_WEEK;
+
+const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
+
+// Filter posts based on deployment week
+const posts = allPosts.filter((post) =>
+  shouldPublishPost(post.data.publishDate, deploymentWeek)
+);
+
 posts.sort(
   (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
     b.data.publishDate.valueOf() - a.data.publishDate.valueOf()

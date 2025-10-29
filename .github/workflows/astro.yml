@@ -72,12 +72,21 @@ jobs:
       - name: Run checks and tests
         run: npm test
         working-directory: ${{ env.BUILD_PATH }}
+      - name: Calculate deployment week
+        id: deployment-week
+        run: |
+          # Calculate ISO week number (yyyy_ww format)
+          WEEK=$(date -u +"%Y_%V")
+          echo "week=$WEEK" >> $GITHUB_OUTPUT
+          echo "Deployment week: $WEEK"
       - name: Build with Astro
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
             --site "${{ steps.pages.outputs.origin }}" \
             --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
+        env:
+          DEPLOYMENT_WEEK: ${{ steps.deployment-week.outputs.week }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

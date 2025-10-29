@@ -1,9 +1,17 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { shouldPublishPost } from '~/utils/dateUtils';
 
 export async function getStaticPaths() {
-  const posts: CollectionEntry<'blog'>[] = await getCollection('blog');
+  const deploymentWeek = import.meta.env.DEPLOYMENT_WEEK;
+  const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
+
+  // Filter posts based on deployment week
+  const posts = allPosts.filter((post) =>
+    shouldPublishPost(post.data.publishDate, deploymentWeek)
+  );
+
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
