@@ -15,7 +15,6 @@ describe('Header', () => {
       { site: 'tequity.app', email: 'pouya@tequity.app' },
       { site: 'kenniss.com', email: 'pouya@kenniss.com' },
       { site: 'cervais.com', email: 'pouya@cervais.com' },
-      { site: 'bookerdimaio.com', email: 'pouya.byousefi@bookerdimaio.com' },
       { site: 'pouyadata.com', email: 'pouyadatallc@gmail.com' },
       {
         site: 'humanrightsconnected.org',
