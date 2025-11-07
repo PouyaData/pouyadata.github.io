@@ -8,6 +8,19 @@ tags: [New York City, Zohran Mamdani, Policy, Politics]
 
 ![zohran](./images/zohranai.webp)
 
+## The Scorecard
+
+| Category | What Critics Predicted | Baseline (Pre-Mamdani) | Grade "A" Outcome | Grade "F" Outcome | Current Status |
+|----------|----------------------|------------------------|-------------------|-------------------|----------------|
+| **Public Safety** | Crime surge due to police defunding | Stable crime rates, Oct-Nov 2024 | Crime decreases or stays flat while improving community relations | Significant crime increase (>10% major crimes) | **Pending** - No immediate spike, policies not yet implemented |
+| **Economy & Taxes** | Millionaire exodus, economic collapse | ~60,000 millionaires in NYC, stable economy | Tax base maintained or grows despite rate increases | >20% decline in high-income residents, business closures | **Pending** - No mass exodus observed, markets stable |
+| **Housing** | Rental market collapse, construction halt | 2.3% vacancy rate, ongoing construction | Vacancy rate increases, rents stabilize, new construction continues | Landlords exit market en masse, construction drops >30% | **Pending** - Market stable, landlords cautiously waiting |
+| **Education** | Public school flight, enrollment drop | 900K students enrolled, stable gifted programs | Enrollment maintained/grows, equity improves without achievement loss | >10% enrollment decline, test scores plummet | **Pending** - No enrollment changes yet, policy pending |
+
+**Reading the Scorecard**: This report card tracks whether early evidence supports or undermines the dramatic warnings from Mamdani's critics. As policies are implemented, we'll update these metrics to show real outcomes vs. predictions.
+
+---
+
 Zohran Mamdani's historic win as New York City's mayor-elect has been heralded as a mandate for progressive change, yet it's also been met with a barrage of dire warnings. Critics across the political spectrum have voiced fears about what a Mamdani administration might bring: **skyrocketing taxes driving residents away, surges in crime due to "soft" policies, collapsing public services under the weight of socialist programs,** and even cultural upheaval. Now that the campaign is over, the question becomes: how do these fears stack up against the early indicators of Mamdani's policy impact?
 
 This report card examines key areas of concern raised during the campaign—public safety, taxation and the economy, housing, and education—to see whether initial evidence supports the doomsday scenarios painted by opponents or undermines them. Where possible, we'll measure early policy moves and outcomes against the dramatic predictions. By comparing critics' fears[^1] to the reality unfolding, we aim to provide a nuanced picture of what New Yorkers can expect from a Mamdani mayoralty.
