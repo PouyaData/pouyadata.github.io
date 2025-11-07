@@ -21,10 +21,17 @@ a {
 
 .site-nav {
   margin-bottom: 1rem;
+  padding: 1rem 2rem;
 }
 
 .site-nav a {
   margin-right: 0.5rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.site-nav a:hover {
+  color: #ffd700;
 }
 
 .container {
