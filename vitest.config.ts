@@ -1,40 +1,17 @@
-import { defineConfig } from 'vitest/config';
-import { fileURLToPath, URL } from 'node:url';
+/// <reference types="vitest/config" />
+import { getViteConfig } from 'astro/config';
 
-export default defineConfig({
-  resolve: {
-    alias: {
-      '~': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
+export default getViteConfig({
   test: {
-    environment: 'jsdom',
+    environment: 'node',
     exclude: ['node_modules/**'],
     include: ['src/**/*.test.ts', 'src/**/*.test.tsx'],
-  },
-  plugins: [
-    {
-      name: 'astro-handler',
-      resolveId(id: string) {
-        if (id.endsWith('.astro')) {
-          return id;
-        }
-        return null;
-      },
-      load(id: string) {
-        if (id.endsWith('.astro')) {
-          const fileName = id.split('/').pop()?.replace('.astro', '');
-          return `
-            export default function ${fileName}(props = {}) {
-              return '<div>Mock ${fileName} component</div>';
-            }
-          `;
-        }
-        return null;
+    setupFiles: ['./vitest.setup.ts'],
+    pool: 'forks',
+    poolOptions: {
+      forks: {
+        singleFork: true,
       },
     },
-  ],
-  esbuild: {
-    target: 'es2020',
   },
 });

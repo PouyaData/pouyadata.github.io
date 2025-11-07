@@ -1,3 +1,4 @@
+
 import { describe, it, expect, vi } from 'vitest';
 import { render } from '../test-utils';
 import Landing from './Landing.astro';

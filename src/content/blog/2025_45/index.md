@@ -1,7 +1,8 @@
 ---
 title: "Zohran Mamdani Report Card: Measuring Policy Impact Against Critics' Fears"
-date: 2025-11-05
-author: John Doe
+description: "Examining key areas of concern raised during Zohran Mamdani's mayoral campaign—public safety, taxation and the economy, housing, and education—to see whether initial evidence supports the doomsday scenarios painted by opponents."
+publishDate: 2025-11-05
+author: 'Pouya Barrach-Yousefi'
 tags: [New York City, Zohran Mamdani, Policy, Politics]
 ---
 

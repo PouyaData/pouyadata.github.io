@@ -1,3 +1,4 @@
+
 import { describe, it, expect } from 'vitest';
 import { render } from '../test-utils';
 import { load } from 'cheerio';
@@ -31,8 +32,15 @@ describe('PostList', () => {
       .get();
 
     expect(slugs).toEqual(['first', 'second']);
-    expect(html).toContain('<a href="/blog/first/">First</a>');
-    expect(html).toContain('<a href="/blog/second/">Second</a>');
+
+    // Check that links exist with correct href and text
+    const firstLink = $('a[href="/blog/first/"]');
+    const secondLink = $('a[href="/blog/second/"]');
+    expect(firstLink.length).toBeGreaterThan(0);
+    expect(firstLink.text()).toBe('First');
+    expect(secondLink.length).toBeGreaterThan(0);
+    expect(secondLink.text()).toBe('Second');
+
     expect(html).toContain('Desc1');
     expect(html).toContain('Desc2');
     expect(html).toContain(posts[0].data.publishDate.toDateString());
