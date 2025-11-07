@@ -21,6 +21,8 @@ tags: [New York City, Zohran Mamdani, Policy, Politics]
 
 ---
 
+## The Next Day: A new Semester
+
 Zohran Mamdani's historic win as New York City's mayor-elect has been heralded as a mandate for progressive change, yet it's also been met with a barrage of dire warnings. Critics across the political spectrum have voiced fears about what a Mamdani administration might bring: **skyrocketing taxes driving residents away, surges in crime due to "soft" policies, collapsing public services under the weight of socialist programs,** and even cultural upheaval. Now that the campaign is over, the question becomes: how do these fears stack up against the early indicators of Mamdani's policy impact?
 
 This report card examines key areas of concern raised during the campaign—public safety, taxation and the economy, housing, and education—to see whether initial evidence supports the doomsday scenarios painted by opponents or undermines them. Where possible, we'll measure early policy moves and outcomes against the dramatic predictions. By comparing critics' fears[^1] to the reality unfolding, we aim to provide a nuanced picture of what New Yorkers can expect from a Mamdani mayoralty.
