@@ -3,7 +3,7 @@
 # Default target
 help:
 	@echo "Available targets:"
-	@echo "  make precommit  - Run build, check, and tests (use before committing)"
+	@echo "  make precommit  - Run build, lint, and tests (use before committing)"
 	@echo "  make build      - Build the Astro project"
 	@echo "  make test       - Run all tests (check + unit tests)"
 	@echo "  make check      - Run Astro check for type errors"
@@ -13,8 +13,8 @@ help:
 	@echo "  make preview    - Preview production build"
 	@echo "  make clean      - Remove build artifacts"
 
-# Pre-commit target: build, check, and test
-precommit: clean build test
+# Pre-commit target: build, check, lint, and test
+precommit: clean build lint test
 	@echo "✓ Pre-commit checks passed! Ready to commit."
 
 # Build the project

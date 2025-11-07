@@ -1,11 +1,9 @@
 import { load } from 'cheerio';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
-
-// Type for Astro components - using any to handle the actual component structure
-type AstroComponent = any;
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 
 // Render function that processes actual Astro components
-export async function render(component: AstroComponent, props?: Record<string, unknown>): Promise<{ html: string }> {
+export async function render(component: AstroComponentFactory, props?: Record<string, unknown>): Promise<{ html: string }> {
   try {
     // Create an Astro container for rendering
     const container = await AstroContainer.create();
