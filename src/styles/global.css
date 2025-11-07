@@ -97,3 +97,11 @@ a {
   color: #888;
   margin-bottom: 2rem;
 }
+
+.post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+}
