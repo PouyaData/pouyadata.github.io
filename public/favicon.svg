@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .orbit {
+        animation: spin 3s linear infinite;
+        transform-origin: center;
+      }
+      .orbit-fast {
+        animation: spin 2s linear infinite;
+        transform-origin: center;
+      }
+    </style>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="#1e3c72" stroke="#ffd700" stroke-width="2"/>
+
+  <!-- Nucleus (proton) -->
+  <circle cx="50" cy="50" r="12" fill="#ffd700"/>
+  <circle cx="50" cy="50" r="8" fill="#fff" opacity="0.3"/>
+
+  <!-- Electron orbit 1 -->
+  <g class="orbit">
+    <ellipse cx="50" cy="50" rx="35" ry="20" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="85" cy="50" r="4" fill="#fff">
+      <animateMotion dur="3s" repeatCount="indefinite">
+        <mpath href="#orbit1"/>
+      </animateMotion>
+    </circle>
+  </g>
+
+  <!-- Electron orbit 2 -->
+  <g class="orbit-fast">
+    <ellipse cx="50" cy="50" rx="20" ry="35" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="50" cy="15" r="4" fill="#fff">
+      <animateMotion dur="2s" repeatCount="indefinite">
+        <mpath href="#orbit2"/>
+      </animateMotion>
+    </circle>
+  </g>
+
+  <!-- Paths for electron motion -->
+  <path id="orbit1" d="M 50,50 m 35,0 a 35,20 0 1,1 -70,0 a 35,20 0 1,1 70,0" fill="none"/>
+  <path id="orbit2" d="M 50,50 m 0,-35 a 20,35 0 1,1 0,70 a 20,35 0 1,1 0,-70" fill="none"/>
+</svg>
