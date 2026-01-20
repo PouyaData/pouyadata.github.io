@@ -14,35 +14,29 @@ tags: [Politics, Iran, Human Rights]
 
 ## My thoughts on the Iranian Protests
 
-* **Iranian regime must go**
+- **Iranian regime must go**
+  - A government that survives by shooting, jailing, torturing, and disappearing its own people has forfeited any claim to legitimacy.
+  - If “order” requires mass repression, that’s not order—it’s occupation.
 
-  * A government that survives by shooting, jailing, torturing, and disappearing its own people has forfeited any claim to legitimacy.
-  * If “order” requires mass repression, that’s not order—it’s occupation.
+- **Iranian protesters have my full support and my wishes for self-determination**
+  - Their future should be decided by Iranians—inside Iran—not by diaspora power brokers, not by Western capitals, not by regional intelligence services.
+  - I’m not interested in ideological purity tests when people are bleeding in the streets.
 
-* **Iranian protesters have my full support and my wishes for self-determination**
+- **Violence only serves the regime’s narrative and scares supporters away**
+  - Violence is the regime’s favorite gift: it lets them rebrand a popular uprising as “terrorism,” justify a crackdown, and peel away the cautious middle.
+  - The more the story becomes “armed insurgency,” the easier it becomes for fence-sitters, neutral institutions, and potential defectors to stay on the sidelines.
 
-  * Their future should be decided by Iranians—inside Iran—not by diaspora power brokers, not by Western capitals, not by regional intelligence services.
-  * I’m not interested in ideological purity tests when people are bleeding in the streets.
+- **Nonviolent movements tend to achieve more of their goals** [2]
+  - Not because dictators have a conscience, but because nonviolence scales participation and makes defections possible—socially, politically, and psychologically. ([Harvard Kennedy School][2])
 
-* **Violence only serves the regime’s narrative and scares supporters away**
+- **The US and Israel are the worst possible actors to involve themselves**
+  - Their involvement doesn’t “help”; it contaminates. It hands Tehran a prepackaged justification and turns Iranian self-determination into someone else’s proxy war.
+  - They have strategic interests, not humanitarian ones—and everyone in the region knows it.
 
-  * Violence is the regime’s favorite gift: it lets them rebrand a popular uprising as “terrorism,” justify a crackdown, and peel away the cautious middle.
-  * The more the story becomes “armed insurgency,” the easier it becomes for fence-sitters, neutral institutions, and potential defectors to stay on the sidelines.
-
-* **Nonviolent movements tend to achieve more of their goals** [2]
-
-  * Not because dictators have a conscience, but because nonviolence scales participation and makes defections possible—socially, politically, and psychologically. ([Harvard Kennedy School][2])
-
-* **The US and Israel are the worst possible actors to involve themselves**
-
-  * Their involvement doesn’t “help”; it contaminates. It hands Tehran a prepackaged justification and turns Iranian self-determination into someone else’s proxy war.
-  * They have strategic interests, not humanitarian ones—and everyone in the region knows it.
-
-* **On Shahzadeh Reza Pahlavi**
-
-  * In my opinion, he reads like an opportunist—someone positioned to benefit from chaos, and someone whose incentives may align very comfortably with Washington, Tel Aviv, or both. I cannot prove anyone is “in someone’s pocket,” but I do know how these pipelines of influence work.
-  * **If the people of Iran want him, they can have him.** That is literally the point of self-determination.
-  * **If the people of Iran want to use him as a symbol to counter the regime, then so be it.** Symbols are tools. The only non-negotiable is that the tool doesn’t become the owner.
+- **On Shahzadeh Reza Pahlavi**
+  - In my opinion, he reads like an opportunist—someone positioned to benefit from chaos, and someone whose incentives may align very comfortably with Washington, Tel Aviv, or both. I cannot prove anyone is “in someone’s pocket,” but I do know how these pipelines of influence work.
+  - **If the people of Iran want him, they can have him.** That is literally the point of self-determination.
+  - **If the people of Iran want to use him as a symbol to counter the regime, then so be it.** Symbols are tools. The only non-negotiable is that the tool doesn’t become the owner.
 
 ---
 
