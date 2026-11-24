@@ -30,17 +30,27 @@ This website represents a comprehensive digital presence that includes:
 
 ### Professional Sections
 
-- **Executive Summary**: Overview of expertise and value proposition
-- **Core Capabilities**: Six key service areas including:
-  - Training & Education
-  - Data & AI Strategy Consulting
-  - AI Transformation
-  - Automation & Operational Excellence
-  - Product Development & Platform Engineering
-  - DoD & Government Expertise
-- **Recent Blog Posts**: Dynamic display of latest articles
-- **Technology Stack**: Showcase of relevant technologies and tools
-- **Call-to-Action**: Professional consultation and networking opportunities
+All capability and past-performance content lives in one typed module,
+`src/data/profile.ts`, distilled from the principal's CV versions. Edit it
+there; every page and the PDF render from it.
+
+- **Home** (`/`): hero, results at a glance, six core capabilities, why Pouya
+  Data, featured past performance, technology expertise, recent posts.
+- **Past Performance** (`/past-performance/`): client engagements (described
+  by sector), leadership record, ventures and advisory roles, credentials.
+- **Capability Statement** (`/capabilities/`): a two-page US Letter document,
+  printable and downloadable as `/pouya-data-capabilities.pdf`.
+
+### Capability statement PDF
+
+`npm run build` runs `astro build` and then `scripts/build-pdf.mjs`, which
+renders `/capabilities/` in headless Chromium (Playwright) to
+`dist/pouya-data-capabilities.pdf`. The script fails the build if the
+brand fonts fail to load, if the
+statement is not exactly two pages, or if any sheet's content overflows — trim
+`src/data/profile.ts` when that happens. Install the browser once with
+`npx playwright install chromium`. Fonts are self-hosted via `@fontsource/*`, and
+the site assumes it is served from the domain root (a user/org Pages site).
 
 ## 🛠️ Technology Stack
 

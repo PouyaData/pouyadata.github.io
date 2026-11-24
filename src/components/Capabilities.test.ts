@@ -2,41 +2,28 @@ import { describe, it, expect } from 'vitest';
 import { render } from '../test-utils';
 import { load } from 'cheerio';
 import Capabilities from './Capabilities.astro';
+import { capabilities } from '~/data/profile';
 
 describe('Capabilities', () => {
-  it('renders capability sections with headings', async () => {
+  it('renders a card per capability, in profile order', async () => {
     const { html } = await render(Capabilities);
     const $ = load(html);
-    
-    expect($('h2').text()).toBe('Core Capabilities');
-    
-    const headings = $('h3')
+
+    const headings = $('.card h3')
       .map((_i, el) => $(el).text())
       .get();
-    
-    expect(headings).toEqual([
-      'Training & Education',
-      'Data & AI Strategy Consulting',
-      'AI Transformation',
-      'Automation & Operational Excellence',
-      'Product Development & Platform Engineering',
-      'DoD & Government Expertise',
-    ]);
+    expect(headings).toEqual(capabilities.map((c) => c.title));
   });
 
-  it('renders all capability cards', async () => {
+  it('lists every offering under its capability', async () => {
     const { html } = await render(Capabilities);
     const $ = load(html);
-    
-    expect($('.capability-card')).toHaveLength(6);
-    expect($('.capability-icon')).toHaveLength(6);
-  });
 
-  it('has proper structure with section and grid', async () => {
-    const { html } = await render(Capabilities);
-    const $ = load(html);
-    
-    expect($('.section')).toHaveLength(1);
-    expect($('.capabilities-grid')).toHaveLength(1);
+    const firstCardOfferings = $('.card')
+      .first()
+      .find('.offerings li')
+      .map((_i, el) => $(el).text())
+      .get();
+    expect(firstCardOfferings).toEqual([...capabilities[0].offerings]);
   });
 });

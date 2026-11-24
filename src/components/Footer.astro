@@ -1,0 +1,79 @@
+---
+import Wordmark from '~/components/Wordmark.astro';
+import Icon from '~/components/Icon.astro';
+import { company } from '~/data/profile';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap grid">
+    <div>
+      <Wordmark />
+      <p class="tagline">{company.tagline}</p>
+    </div>
+    <div class="links">
+      <a href={`mailto:${company.email}`}
+        ><Icon name="mail" size={18} />{company.email}</a
+      >
+      <a href={company.linkedin} rel="noopener"
+        ><Icon name="linkedin" size={18} />LinkedIn</a
+      >
+      <a href={company.pdfPath} download
+        ><Icon name="download" size={18} />Capability statement (PDF)</a
+      >
+    </div>
+  </div>
+  <div class="wrap legal">
+    © {year}
+    {company.name} · {company.location}
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--rule);
+    padding: 56px 0 32px;
+    background: var(--paper);
+  }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .tagline {
+    margin-top: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .links {
+    display: grid;
+    gap: 0.6rem;
+  }
+  .links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+  }
+  .links a:hover {
+    color: var(--sage-deep);
+  }
+  .legal {
+    margin-top: 40px;
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+  }
+  @media print {
+    .site-footer {
+      display: none;
+    }
+  }
+</style>

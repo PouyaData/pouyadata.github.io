@@ -1,0 +1,43 @@
+---
+import EngagementCard from '~/components/EngagementCard.astro';
+import Icon from '~/components/Icon.astro';
+import { engagements } from '~/data/profile';
+
+const featured = [engagements[0], engagements[2], engagements[3]];
+---
+
+<section class="section featured" aria-labelledby="featured-heading">
+  <div class="wrap">
+    <div class="head">
+      <div class="section-head">
+        <p class="eyebrow">Past performance</p>
+        <h2 id="featured-heading">Measured outcomes in regulated industries</h2>
+      </div>
+      <a class="button button--ghost" href="/past-performance/">
+        All engagements <Icon name="arrow" size={16} />
+      </a>
+    </div>
+    <div class="grid">
+      {featured.map((engagement) => <EngagementCard engagement={engagement} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px 32px;
+    margin-bottom: clamp(32px, 5vw, 56px);
+  }
+  .head .section-head {
+    margin-bottom: 0;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 20px;
+  }
+</style>

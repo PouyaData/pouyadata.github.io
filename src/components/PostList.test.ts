@@ -1,4 +1,3 @@
-
 import { describe, it, expect } from 'vitest';
 import { render } from '../test-utils';
 import { load } from 'cheerio';
@@ -43,7 +42,12 @@ describe('PostList', () => {
 
     expect(html).toContain('Desc1');
     expect(html).toContain('Desc2');
-    expect(html).toContain(posts[0].data.publishDate.toDateString());
-    expect(html).toContain(posts[1].data.publishDate.toDateString());
+    const dates = $('time')
+      .map((_i, el) => [[$(el).attr('datetime'), $(el).text().trim()]])
+      .get();
+    expect(dates).toEqual([
+      [posts[0].data.publishDate.toISOString(), 'Jan 1, 2023'],
+      [posts[1].data.publishDate.toISOString(), 'Jan 1, 2024'],
+    ]);
   });
 });

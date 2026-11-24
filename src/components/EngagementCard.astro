@@ -1,0 +1,90 @@
+---
+import type { Engagement } from '~/data/profile';
+
+export interface Props {
+  engagement: Engagement;
+  headingLevel?: 'h3' | 'h4';
+}
+
+const { engagement, headingLevel: Heading = 'h3' } = Astro.props as Props;
+---
+
+<article class="engagement">
+  <p class="meta">
+    <span class="tag">{engagement.sector}</span>
+    {engagement.client}
+  </p>
+  <Heading class="title">{engagement.title}</Heading>
+  <dl>
+    <dt>Challenge</dt>
+    <dd>{engagement.challenge}</dd>
+    <dt>Delivered</dt>
+    <dd>{engagement.delivered}</dd>
+  </dl>
+  <p class="outcome">{engagement.outcome}</p>
+  <ul class="stack" aria-label="Technologies">
+    {engagement.stack.map((item) => <li>{item}</li>)}
+  </ul>
+</article>
+
+<style>
+  .engagement {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+  }
+  .title {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  dl {
+    margin: 0 0 16px;
+    font-size: 0.95rem;
+  }
+  dt {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 12px;
+  }
+  dd {
+    margin: 2px 0 0;
+    color: var(--ink-soft);
+  }
+  .outcome {
+    margin-top: auto;
+    padding: 14px 16px;
+    border-left: 3px solid var(--sage);
+    background: var(--sage-wash);
+    border-radius: 0 8px 8px 0;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+  }
+</style>

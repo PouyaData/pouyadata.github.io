@@ -1,0 +1,50 @@
+---
+import type { WaveTone } from '~/utils/waveTones';
+
+export interface Props {
+  tone?: WaveTone;
+  opacity?: number;
+  animated?: boolean;
+  class?: string;
+}
+
+const {
+  tone = 'ink',
+  opacity = 0.35,
+  animated = true,
+  class: className,
+} = Astro.props as Props;
+---
+
+<div class:list={['wave-field', className, { animated }]} aria-hidden="true">
+  <img src={`/brand/waves-${tone}.svg`} alt="" style={`opacity:${opacity}`} />
+</div>
+
+<style>
+  .wave-field {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .wave-field img {
+    position: absolute;
+    left: -10%;
+    top: 50%;
+    width: 120%;
+    max-width: none;
+    height: 100%;
+    transform: translateY(-50%);
+  }
+  .animated img {
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes drift {
+    from {
+      transform: translate(0, -50%) scaleY(1);
+    }
+    to {
+      transform: translate(-6%, -50%) scaleY(1.12);
+    }
+  }
+</style>

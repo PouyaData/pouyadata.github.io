@@ -1,38 +1,57 @@
 ---
-import '~/styles/technologies.css';
-
+import { technologies } from '~/data/profile';
 ---
 
-<section class="technologies">
-  <h2 class="tech-heading">Technology Expertise</h2>
-  <div class="tech-grid">
-    <div class="tech-category">
-      <h4>AI & Machine Learning</h4>
-      <div class="tech-list">
-        Generative AI<br />Large Language Models<br />Deep Learning<br
-        />MLOps<br />AI Governance
-      </div>
+<section class="section tech" aria-labelledby="tech-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Technology expertise</p>
+      <h2 id="tech-heading">Fluent across the modern data &amp; AI stack</h2>
     </div>
-    <div class="tech-category">
-      <h4>Data Engineering</h4>
-      <div class="tech-list">
-        Big Data Analytics<br />Data Pipelines<br />ETL/ELT<br />Data
-        Warehousing<br />Real-time Processing
-      </div>
-    </div>
-    <div class="tech-category">
-      <h4>Cloud & Infrastructure</h4>
-      <div class="tech-list">
-        AWS / Azure / GCP<br />Kubernetes<br />Infrastructure as Code<br
-        />Pulumi<br />DevSecOps
-      </div>
-    </div>
-    <div class="tech-category">
-      <h4>Custom Solutions</h4>
-      <div class="tech-list">
-        AI Agent in a Box<br />SaaS Platforms<br />API Development<br
-        />Microservices<br />Security Frameworks
-      </div>
-    </div>
+    <dl>
+      {
+        technologies.map((tech) => (
+          <div class="row">
+            <dt>{tech.group}</dt>
+            <dd>{tech.items}</dd>
+          </div>
+        ))
+      }
+    </dl>
   </div>
 </section>
+
+<style>
+  .tech {
+    background: var(--surface);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  dl {
+    margin: 0;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: minmax(140px, 220px) 1fr;
+    gap: 8px 32px;
+    padding: 20px 0;
+    border-top: 1px solid var(--rule);
+  }
+  dt {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    padding-top: 0.25em;
+  }
+  dd {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 640px) {
+    .row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

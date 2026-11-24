@@ -1,4 +1,3 @@
-
 import { describe, it, expect, vi } from 'vitest';
 import { render } from '../test-utils';
 import Landing from './Landing.astro';
@@ -41,7 +40,14 @@ const posts = vi.hoisted(() => [
 vi.mock('astro:content', () => ({
   getCollection: async () => posts,
 }));
-vi.mock('~/components/Header.astro', () => {
+vi.mock('~/components/Hero.astro', () => {
+  const stub = () => '';
+  (
+    stub as unknown as { isAstroComponentFactory: boolean }
+  ).isAstroComponentFactory = true;
+  return { default: stub };
+});
+vi.mock('~/components/Metrics.astro', () => {
   const stub = () => '';
   (
     stub as unknown as { isAstroComponentFactory: boolean }
@@ -49,6 +55,20 @@ vi.mock('~/components/Header.astro', () => {
   return { default: stub };
 });
 vi.mock('~/components/Capabilities.astro', () => {
+  const stub = () => '';
+  (
+    stub as unknown as { isAstroComponentFactory: boolean }
+  ).isAstroComponentFactory = true;
+  return { default: stub };
+});
+vi.mock('~/components/WhyPouyaData.astro', () => {
+  const stub = () => '';
+  (
+    stub as unknown as { isAstroComponentFactory: boolean }
+  ).isAstroComponentFactory = true;
+  return { default: stub };
+});
+vi.mock('~/components/FeaturedWork.astro', () => {
   const stub = () => '';
   (
     stub as unknown as { isAstroComponentFactory: boolean }
