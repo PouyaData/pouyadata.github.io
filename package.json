@@ -2,7 +2,7 @@
   "name": "astro-blog",
   "type": "module",
   "engines": {
-    "node": "^22.22.3 || ^24.16.0 || >=26.3.0"
+    "node": ">=26.13.1"
   },
   "scripts": {
     "dev": "astro dev",

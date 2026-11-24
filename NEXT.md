@@ -1,5 +1,10 @@
 # Unreleased
 
+## 2026-11-24 — Require Node 26.13.1
+
+- Raise the supported Node floor to 26.13.1 (`engines`) and build CI on the
+  Node 26 LTS line, always resolving the newest 26.x release.
+
 ## 2026-11-24 — Build pull requests and diagnose PDF page-count failures
 
 - The Pages workflow now builds pull requests (including the PDF) without
