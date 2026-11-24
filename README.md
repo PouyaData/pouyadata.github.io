@@ -64,7 +64,7 @@ the site assumes it is served from the domain root (a user/org Pages site).
 
 - **Vitest 3.2.4**: Fast unit testing framework
 - **@astrojs/check**: Type checking and linting
-- **ESLint 8.57.0**: Code linting and style enforcement
+- **ESLint 10** (flat config, `eslint.config.js`): Code linting and style enforcement
 - **Prettier 3.3.2**: Code formatting
 - **Git**: Version control and collaboration
 
@@ -103,7 +103,7 @@ src/
 
 ### Prerequisites
 
-- Node.js (version 18 or higher)
+- Node.js 24 LTS (CI builds on 24; the toolchain requires Node 22.22.3+, 24.16+, or 26.3+)
 - npm or yarn package manager
 
 ### Installation
