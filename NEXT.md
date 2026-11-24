@@ -4,6 +4,8 @@
 
 - The Pages workflow now builds pull requests (including the PDF) without
   deploying them, so build breakages surface before merge.
+  Permissions are granted per job: the build gets read-only access, and only
+  the deploy job gets the Pages deploy and OIDC permissions.
 - When the capability statement renders the wrong number of pages, the PDF
   build saves the PDF and print-layout measurements to `pdf-debug/`, which CI
   uploads as the `pdf-diagnostics` artifact.
