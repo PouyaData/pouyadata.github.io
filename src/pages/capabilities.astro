@@ -82,6 +82,12 @@ const website = (Astro.site ?? new URL('https://pouyadata.github.io')).host;
     border-top: 1px solid var(--rule);
   }
   @media print {
+    /* Use the statement's page box for the whole document. A box outside
+       the named-page sheets would otherwise force an extra page. */
+    :global(html),
+    :global(body) {
+      page: statement;
+    }
     .intro {
       display: none;
     }

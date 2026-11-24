@@ -7,6 +7,9 @@
 - When the capability statement renders the wrong number of pages, the PDF
   build saves the PDF and print-layout measurements to `pdf-debug/`, which CI
   uploads as the `pdf-diagnostics` artifact.
+- Fix an intermittent 3-page capability statement in CI: the whole page now
+  prints on the statement's named page, so a box outside the sheets cannot
+  force a page break, and each sheet leaves 1px of slack within its page.
 
 ## 2026-11-24 — Clear CI build warnings
 
