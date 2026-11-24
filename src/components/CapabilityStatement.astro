@@ -470,8 +470,13 @@ const wavesUrl = '/brand/waves-sage.svg';
       display: block;
       gap: 0;
     }
+    /* A sheet exactly as tall as the page leaves zero slack, so sub-pixel
+       rounding in some renderers spills a sliver onto a third page. The
+       forced break still starts each sheet on its own page. */
     .sheet {
+      height: calc(11in - 1px);
       box-shadow: none;
+      break-inside: avoid;
       break-after: page;
     }
     .sheet:last-child {
