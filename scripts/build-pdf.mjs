@@ -8,12 +8,13 @@
  * Assumes the site is built for the domain root (a user/org Pages site).
  */
 import { createServer } from 'node:http';
-import { readFile, stat, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import { extname, join, normalize, resolve, sep } from 'node:path';
 import { chromium } from 'playwright';
 
 const DIST = resolve(process.argv[2] ?? 'dist');
 const OUTPUT = join(DIST, 'pouya-data-capabilities.pdf');
+const DEBUG_DIR = resolve('pdf-debug');
 const EXPECTED_PAGES = 2;
 const REQUIRED_FONT_FAMILIES = ['Montserrat', 'IBM Plex Sans', 'IBM Plex Mono'];
 
@@ -73,6 +74,38 @@ function serveDist() {
   );
 }
 
+// Print-media layout facts that explain where an unexpected page came from.
+function measureLayout(page) {
+  return page.evaluate(() => {
+    const box = (el) => {
+      const rect = el.getBoundingClientRect();
+      return { top: rect.top, height: rect.height };
+    };
+    return {
+      userAgent: navigator.userAgent,
+      devicePixelRatio: window.devicePixelRatio,
+      viewport: [window.innerWidth, window.innerHeight],
+      documentHeight: document.documentElement.scrollHeight,
+      sheets: [...document.querySelectorAll('.sheet')].map(box),
+      printedBlocks: [...document.querySelectorAll('body > *, main > *')]
+        .filter((el) => getComputedStyle(el).display !== 'none')
+        .map((el) => ({
+          element: `${el.tagName.toLowerCase()}.${el.classList[0] ?? ''}`,
+          ...box(el),
+        })),
+    };
+  });
+}
+
+async function saveDiagnostics(pdf, layout) {
+  await mkdir(DEBUG_DIR, { recursive: true });
+  await writeFile(join(DEBUG_DIR, 'capability-statement.pdf'), pdf);
+  await writeFile(
+    join(DEBUG_DIR, 'layout.json'),
+    JSON.stringify(layout, null, 2)
+  );
+}
+
 function countPages(pdf) {
   return (pdf.toString('latin1').match(/\/Type\s*\/Page(?!s)/g) ?? []).length;
 }
@@ -126,8 +159,11 @@ try {
   });
   const pages = countPages(pdf);
   if (pages !== EXPECTED_PAGES) {
+    const layout = await measureLayout(page);
+    await saveDiagnostics(pdf, layout);
     throw new Error(
-      `Capability statement rendered ${pages} pages; expected ${EXPECTED_PAGES}. Trim content in src/data/profile.ts.`
+      `Capability statement rendered ${pages} pages; expected ${EXPECTED_PAGES}. ` +
+        `Layout: ${JSON.stringify(layout)}. Diagnostics saved to ${DEBUG_DIR}.`
     );
   }
   await writeFile(OUTPUT, pdf);

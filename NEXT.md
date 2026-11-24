@@ -1,5 +1,13 @@
 # Unreleased
 
+## 2026-11-24 — Build pull requests and diagnose PDF page-count failures
+
+- The Pages workflow now builds pull requests (including the PDF) without
+  deploying them, so build breakages surface before merge.
+- When the capability statement renders the wrong number of pages, the PDF
+  build saves the PDF and print-layout measurements to `pdf-debug/`, which CI
+  uploads as the `pdf-diagnostics` artifact.
+
 ## 2026-11-24 — Clear CI build warnings
 
 - Pages workflow: move to the Node 24 action majors (checkout v7, setup-node

@@ -12,13 +12,16 @@ export default defineConfig(
   {
     files: ['scripts/**/*.mjs', '*.config.{js,mjs,ts}'],
     languageOptions: {
-      // Node scripts; `document` is referenced inside Playwright
+      // Node scripts; browser globals are referenced inside Playwright
       // page.evaluate() callbacks, which run in the browser.
       globals: {
         process: 'readonly',
         console: 'readonly',
         URL: 'readonly',
         document: 'readonly',
+        window: 'readonly',
+        navigator: 'readonly',
+        getComputedStyle: 'readonly',
       },
     },
   },

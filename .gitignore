@@ -31,3 +31,6 @@ pnpm-lock.yaml
 
 # Intraview local files
 .intraview/
+
+# PDF build diagnostics
+pdf-debug/
