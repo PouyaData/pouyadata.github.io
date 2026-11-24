@@ -1,7 +1,99 @@
 ---
+import Wordmark from '~/components/Wordmark.astro';
 
+const navLinks = [
+  { href: '/capabilities/', label: 'Capabilities' },
+  { href: '/past-performance/', label: 'Past Performance' },
+  { href: '/blog', label: 'Blog' },
+] as const;
+
+const trimSlash = (path: string) => path.replace(/\/$/, '');
+const current = trimSlash(Astro.url.pathname);
+const isCurrent = (href: string) => {
+  const target = trimSlash(href);
+  return current === target || current.startsWith(`${target}/`);
+};
 ---
 
-<nav class="site-nav">
-  <a href="/">Home</a> / <a href="/blog">Blog</a>
-</nav>
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="/" class="home" aria-label="Pouya Data home"><Wordmark /></a>
+    <nav aria-label="Primary">
+      <ul>
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                aria-current={isCurrent(link.href) ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgb(247 246 242 / 0.85);
+    backdrop-filter: saturate(1.4) blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    min-height: 68px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .home {
+    text-decoration: none;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  nav a {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 0.4em 0;
+    border-bottom: 1px solid transparent;
+  }
+  nav a:hover,
+  nav a[aria-current='page'] {
+    color: var(--ink);
+    border-bottom-color: var(--sage);
+  }
+  @media (max-width: 560px) {
+    ul {
+      gap: 0.25rem 1.1rem;
+    }
+    nav a {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+    }
+  }
+  @media print {
+    .site-header {
+      display: none;
+    }
+  }
+</style>

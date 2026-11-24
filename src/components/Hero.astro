@@ -1,0 +1,63 @@
+---
+import Wordmark from '~/components/Wordmark.astro';
+import WaveField from '~/components/WaveField.astro';
+import Icon from '~/components/Icon.astro';
+import { company } from '~/data/profile';
+---
+
+<section class="hero">
+  <WaveField tone="ink" opacity={0.28} />
+  <div class="wrap inner">
+    <p class="eyebrow">Technology · Data · AI · Security</p>
+    <h1><Wordmark size="lg" /><span class="visually-hidden"> LLC</span></h1>
+    <p class="tagline">{company.tagline}</p>
+    <p class="lede">{company.positioning}</p>
+    <div class="actions">
+      <a class="button" href="/capabilities/">
+        Capability statement <Icon name="arrow" size={16} />
+      </a>
+      <a class="button button--ghost" href="/past-performance/">
+        Past performance
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(72px, 12vw, 150px) 0 clamp(64px, 10vw, 120px);
+    background: linear-gradient(180deg, var(--surface) 0%, var(--paper) 100%);
+  }
+  .inner {
+    position: relative;
+  }
+  h1 {
+    margin: 0;
+  }
+  .tagline {
+    margin: 1.4rem 0 0;
+    font-family: var(--font-mono);
+    font-size: clamp(0.72rem, 1.6vw, 0.95rem);
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .lede {
+    max-width: 34ch;
+    margin: clamp(28px, 4vw, 44px) 0 0;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 36px;
+  }
+</style>

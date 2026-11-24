@@ -1,0 +1,66 @@
+---
+import WaveField from '~/components/WaveField.astro';
+import { metrics } from '~/data/profile';
+---
+
+<section class="metrics" aria-labelledby="metrics-heading">
+  <WaveField tone="sage" opacity={0.22} />
+  <div class="wrap">
+    <h2 id="metrics-heading" class="visually-hidden">Results at a glance</h2>
+    <dl>
+      {
+        metrics.map((metric) => (
+          <div class="metric">
+            <dt>{metric.label}</dt>
+            <dd>{metric.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  .metrics {
+    position: relative;
+    overflow: hidden;
+    background: var(--charcoal);
+    color: var(--paper);
+    padding: clamp(48px, 7vw, 80px) 0;
+  }
+  dl {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 36px 28px;
+    margin: 0;
+  }
+  .metric {
+    display: flex;
+    flex-direction: column-reverse;
+    border-top: 1px solid rgb(143 191 178 / 0.35);
+    padding-top: 16px;
+  }
+  dd {
+    margin: 0 0 6px;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--sage);
+    white-space: nowrap;
+  }
+  dt {
+    font-size: 0.9rem;
+    color: rgb(247 246 242 / 0.75);
+    line-height: 1.4;
+  }
+  @media (max-width: 720px) {
+    dl {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px 20px;
+    }
+    dd {
+      font-size: clamp(1.25rem, 6vw, 1.6rem);
+    }
+  }
+</style>

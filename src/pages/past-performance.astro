@@ -1,0 +1,237 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import EngagementCard from '~/components/EngagementCard.astro';
+import WaveField from '~/components/WaveField.astro';
+import CTA from '~/components/CTA.astro';
+import {
+  company,
+  credentials,
+  engagements,
+  leadershipRecord,
+  ventures,
+} from '~/data/profile';
+---
+
+<BaseLayout
+  title="Past Performance — Pouya Data LLC"
+  description="Engagements delivered by Pouya Data LLC and the leadership record behind them: AstraZeneca, IQVIA, Prophecy, and two decades of federal and healthcare software delivery."
+>
+  <section class="page-hero">
+    <WaveField tone="ink" opacity={0.18} />
+    <div class="wrap inner">
+      <p class="eyebrow">Past performance</p>
+      <h1>Outcomes we can point to.</h1>
+      <p class="lede">
+        {company.name} engagements, followed by the leadership record of our principal,
+        {company.principal.name} — two decades building software, data platforms,
+        and AI programs where compliance is non-negotiable.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="engagements-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">{company.name} · 2024 – present</p>
+        <h2 id="engagements-heading">Client engagements</h2>
+        <p>
+          Clients are described by sector to respect confidentiality. References
+          are available on request.
+        </p>
+      </div>
+      <div class="cards">
+        {
+          engagements.map((engagement) => (
+            <EngagementCard engagement={engagement} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section record" aria-labelledby="record-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Leadership record</p>
+        <h2 id="record-heading">Before Pouya Data</h2>
+      </div>
+      <ol class="timeline">
+        {
+          leadershipRecord.map((role) => (
+            <li>
+              <div class="when">
+                <span class="period">{role.period}</span>
+                <span class="where">{role.location}</span>
+              </div>
+              <div class="what">
+                <h3>{role.organization}</h3>
+                <p class="role-title">{role.title}</p>
+                <ul>
+                  {role.highlights.map((highlight) => (
+                    <li>{highlight}</li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="ventures-heading">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Ventures &amp; advisory</p>
+        <h2 id="ventures-heading">Building, not just advising</h2>
+        <ul class="ventures">
+          {
+            ventures.map((venture) => (
+              <li>
+                <div class="venture-head">
+                  <strong>{venture.name}</strong>
+                  <span>
+                    {venture.role}
+                    {venture.period && ` · ${venture.period}`}
+                  </span>
+                </div>
+                <p>{venture.summary}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow">Credentials</p>
+        <h2>Education &amp; recognition</h2>
+        <ul class="credentials">
+          {credentials.map((credential) => <li>{credential}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(64px, 10vw, 120px) 0 clamp(48px, 7vw, 80px);
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+  }
+  .inner {
+    position: relative;
+  }
+  h1 {
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    font-weight: 300;
+  }
+  .lede {
+    max-width: 60ch;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 20px;
+  }
+  .record {
+    background: var(--surface);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .timeline {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .timeline > li {
+    display: grid;
+    grid-template-columns: minmax(150px, 220px) 1fr;
+    gap: 12px 40px;
+    padding: 28px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .when {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .period {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--sage-deep);
+  }
+  .where {
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+  }
+  .what h3 {
+    font-size: 1.45rem;
+    font-weight: 400;
+    margin-bottom: 0.15em;
+  }
+  .role-title {
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  .what ul {
+    margin: 0;
+    padding-left: 1.1em;
+    color: var(--ink-soft);
+  }
+  .what li {
+    margin-bottom: 0.35em;
+  }
+  .what li::marker {
+    color: var(--sage-deep);
+  }
+  .split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+    gap: clamp(40px, 6vw, 80px);
+  }
+  .split h2 {
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-weight: 300;
+  }
+  .ventures,
+  .credentials {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .ventures li,
+  .credentials li {
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .venture-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 16px;
+  }
+  .venture-head strong {
+    font-weight: 500;
+  }
+  .venture-head span {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+  }
+  .ventures p {
+    margin: 4px 0 0;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  @media (max-width: 640px) {
+    .timeline > li {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

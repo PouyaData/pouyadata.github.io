@@ -1,0 +1,94 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CapabilityStatement from '~/components/CapabilityStatement.astro';
+import Icon from '~/components/Icon.astro';
+import { company } from '~/data/profile';
+
+const website = (Astro.site ?? new URL('https://pouyadata.github.io')).host;
+---
+
+<BaseLayout
+  title="Capability Statement — Pouya Data LLC"
+  description="Pouya Data LLC capability statement: core competencies, differentiators, past performance, and company data. Download as PDF."
+>
+  <section class="intro">
+    <div class="wrap row">
+      <div>
+        <p class="eyebrow">Capability statement</p>
+        <h1>Everything a contracting team needs, on two pages.</h1>
+      </div>
+      <div class="actions">
+        <a
+          class="button"
+          href={company.pdfPath}
+          download="Pouya-Data-Capability-Statement.pdf"
+        >
+          <Icon name="download" size={16} /> Download PDF
+        </a>
+        <button class="button button--ghost" type="button" data-print>
+          <Icon name="print" size={16} /> Print
+        </button>
+      </div>
+    </div>
+  </section>
+  <div class="viewer">
+    <CapabilityStatement updated={new Date()} website={website} />
+  </div>
+</BaseLayout>
+
+<script>
+  const statement = document.querySelector<HTMLElement>('.statement');
+  const sheetWidth = 816 + 32;
+
+  function fitSheets() {
+    if (!statement) return;
+    const zoom = Math.min(1, document.documentElement.clientWidth / sheetWidth);
+    statement.style.setProperty('--sheet-zoom', zoom.toFixed(3));
+  }
+
+  fitSheets();
+  window.addEventListener('resize', fitSheets);
+  document
+    .querySelector('[data-print]')
+    ?.addEventListener('click', () => window.print());
+</script>
+
+<style>
+  .intro {
+    padding: clamp(48px, 7vw, 80px) 0 clamp(32px, 5vw, 48px);
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  h1 {
+    max-width: 18ch;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: 300;
+    margin: 0;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .viewer {
+    overflow-x: auto;
+    padding: 40px 16px 80px;
+    background: #e9e8e3;
+    border-top: 1px solid var(--rule);
+  }
+  @media print {
+    .intro {
+      display: none;
+    }
+    .viewer {
+      padding: 0;
+      background: none;
+      border: 0;
+    }
+  }
+</style>

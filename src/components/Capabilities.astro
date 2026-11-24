@@ -1,74 +1,104 @@
 ---
-import '~/styles/capabilities.css';
-
+import Icon from '~/components/Icon.astro';
+import { capabilities } from '~/data/profile';
 ---
 
-<section class="section">
-  <h2>Core Capabilities</h2>
-  <div class="capabilities-grid">
-    <div class="capability-card">
-      <div class="capability-icon">🎓</div>
-      <h3>Training & Education</h3>
+<section
+  class="section"
+  id="capabilities"
+  aria-labelledby="capabilities-heading"
+>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Core capabilities</p>
+      <h2 id="capabilities-heading">
+        Strategy, engineering, and governance in one seat
+      </h2>
       <p>
-        Empowering teams through tailored training sessions and workshops
-        covering Data Science, Machine Learning, Generative AI, and DevSecOps.
-        My approach bridges theory and practical application, equipping your
-        team with actionable skills for immediate impact.
+        Six practice areas, delivered by the same leadership — so the roadmap,
+        the architecture, and the code never drift apart.
       </p>
     </div>
-
-    <div class="capability-card">
-      <div class="capability-icon">🎯</div>
-      <h3>Data & AI Strategy Consulting</h3>
-      <p>
-        Guiding strategic initiatives with deep expertise in data engineering,
-        AI-driven analytics, cloud-native infrastructures, and governance
-        frameworks to unlock sustained value from your data assets and ensure
-        competitive advantage.
-      </p>
-    </div>
-
-    <div class="capability-card">
-      <div class="capability-icon">🚀</div>
-      <h3>AI Transformation</h3>
-      <p>
-        Leading your organization into the next generation of Digital
-        Transformation by integrating cutting-edge AI capabilities directly into
-        your operational and decision-making processes for maximum efficiency
-        and innovation.
-      </p>
-    </div>
-
-    <div class="capability-card">
-      <div class="capability-icon">⚙️</div>
-      <h3>Automation & Operational Excellence</h3>
-      <p>
-        Implementing xOps methodologies and homegrown frameworks underpinned by
-        robust Infrastructure-as-Code solutions like Pulumi, streamlining
-        operations, ensuring security, and driving significant efficiency gains.
-      </p>
-    </div>
-
-    <div class="capability-card">
-      <div class="capability-icon">🛠️</div>
-      <h3>Product Development & Platform Engineering</h3>
-      <p>
-        Innovating with custom-built on-premises Generative AI solutions (AI
-        Agent in a Box), SaaS product engineering, and scalable platform
-        architectures designed specifically to your organizational needs and
-        strategic vision.
-      </p>
-    </div>
-
-    <div class="capability-card">
-      <div class="capability-icon">🏛️</div>
-      <h3>DoD & Government Expertise</h3>
-      <p>
-        Specialized experience working with Department of Defense clients and
-        government agencies, ensuring compliance with security requirements
-        while delivering innovative AI solutions that meet mission-critical
-        objectives.
-      </p>
-    </div>
+    <ul class="grid">
+      {
+        capabilities.map((capability) => (
+          <li class="card">
+            <span class="icon-wrap">
+              <Icon name={capability.icon} size={26} />
+            </span>
+            <h3>{capability.title}</h3>
+            <p>{capability.summary}</p>
+            <ul class="offerings">
+              {capability.offerings.map((offering) => (
+                <li>{offering}</li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: 1px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .card {
+    background: var(--surface);
+    padding: 32px 28px 30px;
+    transition: background 0.25s ease;
+  }
+  .card:hover {
+    background: var(--sage-wash);
+  }
+  .icon-wrap {
+    display: inline-grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--sage-wash);
+    color: var(--sage-deep);
+    margin-bottom: 20px;
+  }
+  .card:hover .icon-wrap {
+    background: var(--surface);
+  }
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  p {
+    color: var(--ink-soft);
+  }
+  .offerings {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.92rem;
+  }
+  .offerings li {
+    padding: 7px 0 7px 18px;
+    border-top: 1px dashed var(--rule);
+    position: relative;
+  }
+  .offerings li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.05em;
+    width: 8px;
+    height: 1px;
+    background: var(--sage-deep);
+  }
+</style>

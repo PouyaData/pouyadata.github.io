@@ -79,6 +79,9 @@ jobs:
           WEEK=$(date -u +"%Y_%V")
           echo "week=$WEEK" >> $GITHUB_OUTPUT
           echo "Deployment week: $WEEK"
+      - name: Install Chromium for the capability statement PDF
+        run: npx --no-install playwright install --with-deps chromium
+        working-directory: ${{ env.BUILD_PATH }}
       - name: Build with Astro
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
@@ -87,6 +90,9 @@ jobs:
         working-directory: ${{ env.BUILD_PATH }}
         env:
           DEPLOYMENT_WEEK: ${{ steps.deployment-week.outputs.week }}
+      - name: Generate capability statement PDF
+        run: npm run build:pdf
+        working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

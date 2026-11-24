@@ -1,0 +1,481 @@
+---
+import Wordmark from '~/components/Wordmark.astro';
+import {
+  capabilities,
+  company,
+  credentials,
+  differentiators,
+  engagements,
+  industries,
+  leadershipRecord,
+  metrics,
+  principles,
+  technologies,
+} from '~/data/profile';
+
+export interface Props {
+  updated: Date;
+  website: string;
+}
+
+const { updated, website } = Astro.props as Props;
+const updatedLabel = updated.toLocaleDateString('en-US', {
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+const priorRoles = leadershipRecord.slice(0, 3);
+const wavesUrl = '/brand/waves-sage.svg';
+---
+
+<div class="statement">
+  <section class="sheet" aria-label="Capability statement, page 1">
+    <header class="band" style={`--waves:url(${wavesUrl})`}>
+      <div>
+        <Wordmark />
+        <p class="band-tagline">{company.tagline}</p>
+      </div>
+      <div class="band-right">
+        <p class="doc-title">Capability Statement</p>
+        <p>Updated {updatedLabel}</p>
+      </div>
+    </header>
+
+    <div class="cols">
+      <div class="main">
+        <h2>Company overview</h2>
+        <p class="overview">{company.overview}</p>
+
+        <h2>Core competencies</h2>
+        <ul class="competencies">
+          {
+            capabilities.map((capability) => (
+              <li>
+                <h3>{capability.title}</h3>
+                <p>{capability.summary}</p>
+                <p class="offer">{capability.offerings.join(' · ')}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <aside class="side">
+        <h2>At a glance</h2>
+        <dl class="glance">
+          {
+            metrics.map((metric) => (
+              <div>
+                <dd>{metric.value}</dd>
+                <dt>{metric.label}</dt>
+              </div>
+            ))
+          }
+        </dl>
+
+        <h2>Differentiators</h2>
+        <ul class="diffs">
+          {
+            differentiators.map((item) => (
+              <li>
+                <strong>{item.title}.</strong> {item.body}
+              </li>
+            ))
+          }
+        </ul>
+
+        <h2>Industries served</h2>
+        <ul class="plain">
+          {
+            industries.map((industry) => (
+              <li>
+                <strong>{industry.name}</strong> — {industry.detail}
+              </li>
+            ))
+          }
+        </ul>
+
+        <h2>How we engage</h2>
+        <ul class="plain">
+          {principles.map((principle) => <li>{principle}</li>)}
+        </ul>
+      </aside>
+    </div>
+
+    <footer class="sheet-foot">
+      <span>{company.name}</span>
+      <span>{company.email}</span>
+      <span>{website}</span>
+      <span>1 / 2</span>
+    </footer>
+  </section>
+
+  <section class="sheet" aria-label="Capability statement, page 2">
+    <header class="strip">
+      <Wordmark />
+      <span>Capability Statement · Past Performance</span>
+    </header>
+
+    <h2>Past performance — {company.name}</h2>
+    <ol class="perf">
+      {
+        engagements.map((engagement) => (
+          <li>
+            <p class="perf-client">
+              {engagement.client} · {engagement.sector}
+            </p>
+            <h3>{engagement.title}</h3>
+            <p>{engagement.delivered}</p>
+            <p class="perf-outcome">Result: {engagement.outcome}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <h2>Principal's leadership record</h2>
+    <ol class="perf roles">
+      {
+        priorRoles.map((role) => (
+          <li>
+            <p class="perf-client">
+              {role.organization} · {role.period}
+            </p>
+            <h3>{role.title}</h3>
+            <p>{role.highlights.slice(0, 2).join(' ')}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="trio">
+      <div>
+        <h2>Technologies</h2>
+        <dl class="tech">
+          {
+            technologies.map((tech) => (
+              <div>
+                <dt>{tech.group}</dt>
+                <dd>{tech.items}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+      <div>
+        <h2>Credentials</h2>
+        <ul class="plain">
+          {credentials.map((credential) => <li>{credential}</li>)}
+        </ul>
+      </div>
+      <div class="contact">
+        <h2>Company data</h2>
+        <dl>
+          <dt>Principal</dt>
+          <dd>{company.principal.name}<br />{company.principal.title}</dd>
+          <dt>Location</dt>
+          <dd>{company.location}</dd>
+          <dt>Established</dt>
+          <dd>{company.founded}</dd>
+          <dt>Email</dt>
+          <dd>{company.email}</dd>
+          <dt>LinkedIn</dt>
+          <dd>{company.linkedin.replace('https://www.', '')}</dd>
+          <dt>Web</dt>
+          <dd>{website}</dd>
+        </dl>
+      </div>
+    </div>
+
+    <footer class="sheet-foot">
+      <span>{company.name}</span>
+      <span>{company.email}</span>
+      <span>{website}</span>
+      <span>2 / 2</span>
+    </footer>
+  </section>
+</div>
+
+<style>
+  .statement {
+    --doc-ink: var(--ink);
+    display: grid;
+    gap: 32px;
+    justify-content: center;
+    font-size: 9.4pt;
+    line-height: 1.42;
+  }
+  .sheet {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 8.5in;
+    height: 11in;
+    padding: 0.5in 0.55in 0.4in;
+    background: var(--surface);
+    color: var(--doc-ink);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  /* Never let a block shrink to hide overflow; the PDF build checks it. */
+  .sheet > * {
+    flex-shrink: 0;
+  }
+  h1,
+  h2,
+  h3,
+  p {
+    margin: 0;
+  }
+  h2 {
+    font-family: var(--font-mono);
+    font-size: 7.4pt;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    margin: 14pt 0 6pt;
+    padding-bottom: 3pt;
+    border-bottom: 0.75pt solid var(--rule);
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-size: 10.5pt;
+    font-weight: 500;
+  }
+  ul,
+  ol,
+  dl {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  dd {
+    margin: 0;
+  }
+
+  /* Page 1 header band */
+  .band {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16pt;
+    margin: -0.5in -0.55in 4pt;
+    padding: 0.38in 0.55in 0.26in;
+    background: var(--charcoal);
+    color: var(--paper);
+    overflow: hidden;
+  }
+  .band::before {
+    content: '';
+    position: absolute;
+    inset: -40% -15%;
+    background: var(--waves) center / 100% 100% no-repeat;
+    opacity: 0.28;
+  }
+  .band > * {
+    position: relative;
+  }
+  .band :global(.wordmark) {
+    font-size: 30pt;
+  }
+  .band :global(.data) {
+    color: var(--paper);
+  }
+  .band-tagline {
+    margin-top: 6pt;
+    font-family: var(--font-mono);
+    font-size: 7pt;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgb(247 246 242 / 0.75);
+  }
+  .band-right {
+    text-align: right;
+  }
+  .band-right .doc-title {
+    font-family: var(--font-display);
+    font-size: 13pt;
+    font-weight: 400;
+    color: var(--sage);
+    letter-spacing: 0.04em;
+  }
+  .band-right p {
+    font-size: 7.5pt;
+    color: rgb(247 246 242 / 0.7);
+  }
+
+  .cols {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 20pt;
+    flex: 1;
+  }
+  .overview {
+    font-size: 10pt;
+  }
+  .competencies {
+    display: grid;
+    gap: 8pt;
+  }
+  .competencies p {
+    color: var(--ink-soft);
+  }
+  .competencies .offer {
+    font-size: 8.2pt;
+    color: var(--ink-faint);
+  }
+  .side {
+    background: var(--sage-wash);
+    margin: 10pt 0 0;
+    padding: 0 12pt 10pt;
+    border-radius: 8pt;
+    line-height: 1.34;
+  }
+  .glance {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6pt 10pt;
+  }
+  .glance div {
+    display: flex;
+    flex-direction: column;
+  }
+  .glance dd {
+    font-family: var(--font-display);
+    font-size: 12.5pt;
+    color: var(--sage-deep);
+    white-space: nowrap;
+  }
+  .glance dt {
+    font-size: 7.6pt;
+    line-height: 1.3;
+    color: var(--ink-soft);
+  }
+  .diffs li,
+  .plain li {
+    margin-bottom: 3pt;
+    font-size: 8.2pt;
+  }
+  .diffs li {
+    color: var(--ink-soft);
+  }
+  .diffs strong,
+  .plain strong {
+    color: var(--doc-ink);
+    font-weight: 600;
+  }
+
+  /* Page 2 */
+  .strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 8pt;
+    border-bottom: 1.5pt solid var(--sage);
+  }
+  .strip :global(.wordmark) {
+    font-size: 14pt;
+  }
+  .strip span:last-child {
+    font-family: var(--font-mono);
+    font-size: 7pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .perf {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9pt 18pt;
+  }
+  .perf li {
+    padding-left: 8pt;
+    border-left: 2pt solid var(--sage);
+  }
+  .perf p {
+    color: var(--ink-soft);
+    font-size: 8.6pt;
+  }
+  .perf .perf-client {
+    font-family: var(--font-mono);
+    font-size: 6.8pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .perf .perf-outcome {
+    margin-top: 2pt;
+    color: var(--doc-ink);
+    font-weight: 500;
+  }
+  .roles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .roles li {
+    border-left-color: var(--ink-faint);
+  }
+  .trio {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr 0.85fr;
+    gap: 16pt;
+  }
+  .tech div {
+    margin-bottom: 4pt;
+  }
+  .tech dt {
+    font-weight: 600;
+    font-size: 8.2pt;
+  }
+  .tech dd {
+    font-size: 8.2pt;
+    color: var(--ink-soft);
+  }
+  .contact dl {
+    font-size: 8.3pt;
+  }
+  .contact dt {
+    font-family: var(--font-mono);
+    font-size: 6.6pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 4pt;
+  }
+  .contact dd {
+    overflow-wrap: anywhere;
+  }
+
+  .sheet-foot {
+    display: flex;
+    justify-content: space-between;
+    gap: 12pt;
+    margin-top: auto;
+    padding-top: 6pt;
+    border-top: 0.75pt solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 6.6pt;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+  }
+
+  @media screen and (max-width: 8.9in) {
+    .statement {
+      zoom: var(--sheet-zoom, 1);
+    }
+  }
+
+  @media print {
+    .statement {
+      display: block;
+      gap: 0;
+    }
+    .sheet {
+      box-shadow: none;
+      break-after: page;
+    }
+    .sheet:last-child {
+      break-after: auto;
+    }
+  }
+</style>

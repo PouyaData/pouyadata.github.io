@@ -1,63 +1,29 @@
 ---
-import Header from '~/components/Header.astro';
+import Hero from '~/components/Hero.astro';
+import Metrics from '~/components/Metrics.astro';
 import Capabilities from '~/components/Capabilities.astro';
-import RecentPosts from '~/components/RecentPosts.astro';
+import WhyPouyaData from '~/components/WhyPouyaData.astro';
+import FeaturedWork from '~/components/FeaturedWork.astro';
 import Technologies from '~/components/Technologies.astro';
+import RecentPosts from '~/components/RecentPosts.astro';
 import CTA from '~/components/CTA.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
-// Based on uploaded HTML landing content
 const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
 const posts = allPosts
   .sort(
     (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
-      b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+      b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
   )
   .slice(0, 3);
 ---
 
-<div class="container">
-  <Header />
-  <main class="main-content">
-    <section class="section">
-      <h2>Executive Summary</h2>
-      <p class="summary">
-        As the landscape of technology rapidly evolves, harnessing the power of
-        Data Science, Machine Learning, and Generative AI has become essential
-        for organizations aiming to lead in innovation. With over two decades of
-        experience driving transformative technology initiatives, I specialize
-        in empowering Healthcare and Life Sciences organizations to unlock the 
-        full potential of their data assets and AI capabilities.
-
-        Proven technical record of driving digital transformation by building and 
-        directing enterprise-scale teams to deliver on multi-million-dollar data 
-        and AI intensive projects from cloud migrations to AI powered platforms 
-        across Azure, AWS, and GCP.
-      </p>
-      <p class="summary">
-        Leveraging xOps methodologies to reduce data processing times by over
-        90% and infrastructure provisioning times by 1000% (from years to
-        days). Expert in architecting self-service platforms leveraging
-        Databricks, Snowflake, and native cloud services through Infrastructure
-        as Code (Pulumi, Terraform), while pioneering Data Mesh and data
-        product strategies that revitalized IT-business relationships and
-        generated tens of thousands in monthly recurring revenue through new
-        data accessibility initiatives.
-      </p>
-      <p class="summary">
-        PMP-certified leader who bridges technical excellence with executive
-        communication, having presented platform strategies to C-suite
-        leadership and delivered keynote presentations at major industry
-        summits. My expertise bridges the gap between cutting-edge theoretical concepts
-        and practical, actionable implementations that deliver measurable
-        business value. From strategic consulting to hands-on implementation, I
-        guide organizations through their complete AI transformation journey.
-      </p>
-    </section>
-    <Capabilities />
-    <RecentPosts posts={posts} />
-  </main>
-  <Technologies />
-  <CTA />
-</div>
+<Hero />
+<Metrics />
+<Capabilities />
+<WhyPouyaData />
+<FeaturedWork />
+<Technologies />
+<RecentPosts posts={posts} />
+<CTA />

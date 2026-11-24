@@ -1,0 +1,35 @@
+---
+export interface Props {
+  size?: 'sm' | 'lg';
+}
+const { size = 'sm' } = Astro.props as Props;
+---
+
+<span class:list={['wordmark', size]}
+  ><span class="pouya">Pouya</span> <span class="data">Data</span></span
+>
+
+<style>
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .sm {
+    font-size: 1.35rem;
+  }
+  .lg {
+    font-size: clamp(3rem, 11vw, 8.5rem);
+    letter-spacing: 0.02em;
+  }
+  .pouya {
+    color: var(--sage);
+  }
+  .data {
+    color: var(--ink);
+    font-weight: 400;
+  }
+</style>

@@ -1,0 +1,116 @@
+---
+import { differentiators, industries } from '~/data/profile';
+---
+
+<section class="section why" aria-labelledby="why-heading">
+  <div class="wrap layout">
+    <div>
+      <p class="eyebrow">Why Pouya Data</p>
+      <h2 id="why-heading">The C-suite split is an org-chart artifact.</h2>
+      <p class="lede">
+        Technology, data, AI, and security were only ever one discipline.
+        Organizations we lead stop spending cycles on internal translation —
+        they move.
+      </p>
+      <h3 class="sub">Industries served</h3>
+      <ul class="industries">
+        {
+          industries.map((industry) => (
+            <li>
+              <strong>{industry.name}</strong>
+              <span>{industry.detail}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <ol class="diffs">
+      {
+        differentiators.map((item) => (
+          <li>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .why {
+    background: var(--sage-wash);
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+    gap: clamp(40px, 6vw, 88px);
+  }
+  h2 {
+    font-size: clamp(1.9rem, 3.6vw, 2.75rem);
+    font-weight: 300;
+  }
+  .lede {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+  }
+  .sub {
+    margin-top: 36px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+  }
+  .industries {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .industries li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 16px;
+    padding: 12px 0;
+    border-top: 1px solid rgb(61 118 104 / 0.2);
+  }
+  .industries strong {
+    font-weight: 500;
+  }
+  .industries span {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+  .diffs {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: diff;
+  }
+  .diffs li {
+    counter-increment: diff;
+    position: relative;
+    padding: 0 0 28px 64px;
+  }
+  .diffs li::before {
+    content: counter(diff, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--sage-deep);
+    border-top: 1px solid var(--sage-deep);
+    padding-top: 6px;
+    width: 40px;
+  }
+  .diffs h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  .diffs p {
+    color: var(--ink-soft);
+    margin: 0;
+  }
+</style>

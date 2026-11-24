@@ -19,7 +19,13 @@ posts.sort(
 );
 ---
 
-<BaseLayout title="Blog" description="Browse all blog posts from Pouya Data">
-  <h1>Blog</h1>
-  <PostList posts={posts} />
+<BaseLayout
+  title="Blog — Pouya Data"
+  description="Browse all blog posts from Pouya Data"
+>
+  <div class="prose">
+    <p class="eyebrow">Pouya Data</p>
+    <h1>Blog</h1>
+    <PostList posts={posts} />
+  </div>
 </BaseLayout>

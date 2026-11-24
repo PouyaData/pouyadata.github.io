@@ -3,22 +3,60 @@ import type { CollectionEntry } from 'astro:content';
 const { posts } = Astro.props as { posts: CollectionEntry<'blog'>[] };
 ---
 
-<ul>
+<ul class="post-list">
   {
     posts.map((post) => (
       <li>
         <article>
+          <time datetime={post.data.publishDate.toISOString()}>
+            {post.data.publishDate.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+              timeZone: 'UTC',
+            })}
+          </time>
           <h2>
             <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
           </h2>
           <p>{post.data.description}</p>
-          <p>
-            <time datetime={post.data.publishDate.toISOString()}>
-              {post.data.publishDate.toDateString()}
-            </time>
-          </p>
         </article>
       </li>
     ))
   }
 </ul>
+
+<style>
+  .post-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    padding: 24px 0;
+    border-top: 1px solid var(--rule);
+  }
+  time {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 6px 0;
+  }
+  h2 a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  h2 a:hover {
+    color: var(--sage-deep);
+  }
+  p {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+</style>
