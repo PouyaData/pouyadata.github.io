@@ -103,7 +103,7 @@ src/
 
 ### Prerequisites
 
-- Node.js 24 LTS (CI builds on 24; the toolchain requires Node 22.22.3+, 24.16+, or 26.3+)
+- Node.js 26.13.1 or newer (CI builds on the latest Node 26 LTS)
 - npm or yarn package manager
 
 ### Installation
